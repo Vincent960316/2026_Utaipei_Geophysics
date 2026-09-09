@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>地球物理通論 General Geophysics ｜ 北市大地生系 陳達毅老師</title>
+  <meta name="description" content="臺北市立大學地球環境暨生物資源學系《地球物理通論》課程引導網頁。融合 CLIL 雙語、CER 科學論證、DEAR 建模、AI 協作探究與 PyGMT/3D 數位工作流。" />
+
+  <!-- Google Fonts: 溫暖圓潤與文人水彩手帳風格 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Noto+Serif+TC:wght@400;600;700;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* 水彩手繪調色盤 Watercolor Palette */
+      --paper-bg: #fbf8f2;
+      --paper-cream: #f5efe3;
+      --ink-dark: #22333b;
+      --ink-soft: #475569;
+      --ink-faint: #64748b;
+      
+      /* 水彩彩暈渲染色系 */
+      --wc-ocean-deep: #2a6f97;
+      --wc-ocean: #468faf;
+      --wc-ocean-light: #a9d6e5;
+      --wc-ocean-wash: rgba(70, 143, 175, 0.12);
+      
+      --wc-terracotta: #d96b52;
+      --wc-coral: #e07a5f;
+      --wc-coral-wash: rgba(224, 122, 95, 0.13);
+      
+      --wc-sage: #52796f;
+      --wc-moss: #84a98c;
+      --wc-sage-wash: rgba(82, 121, 111, 0.12);
+      
+      --wc-ochre: #d4a373;
+      --wc-gold: #e9c46a;
+      --wc-gold-wash: rgba(233, 196, 106, 0.18);
+      
+      --card-bg: rgba(255, 255, 255, 0.82);
+      --card-border: rgba(212, 163, 115, 0.28);
+      --shadow-sm: 0 4px 15px rgba(42, 111, 151, 0.05);
+      --shadow-md: 0 10px 28px rgba(34, 51, 59, 0.07);
+      --shadow-brush: 2px 4px 0 rgba(212, 163, 115, 0.35);
+      
+      /* 有機手繪圓角 */
+      --radius-organic: 255px 15px 225px 15px / 15px 225px 15px 255px;
+      --radius-soft: 20px 24px 20px 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Kiwi Maru', 'Noto Serif TC', serif;
+      background-color: var(--paper-bg);
+      color: var(--ink-dark);
+      line-height: 1.8;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(169, 214, 229, 0.35) 0%, transparent 40%),
+        radial-gradient(circle at 90% 15%, rgba(224, 122, 95, 0.25) 0%, transparent 45%),
+        radial-gradient(circle at 50% 60%, rgba(132, 169, 140, 0.22) 0%, transparent 50%),
+        radial-gradient(circle at 85% 85%, rgba(233, 196, 106, 0.3) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* 水彩畫紙紋理裝飾 */
+    .paper-texture-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+      opacity: 0.25;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    /* 頂部水彩導航列 */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(251, 248, 242, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px dashed rgba(212, 163, 115, 0.4);
+      padding: 0.8rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--wc-ocean-deep);
+      text-decoration: none;
+    }
+
+    .nav-brand .icon-globe {
+      font-size: 1.6rem;
+      filter: drop-shadow(1px 2px 2px rgba(42, 111, 151, 0.2));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--ink-dark);
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 0.35rem 0.8rem;
+      border-radius: 12px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--wc-coral);
+      background: var(--wc-coral-wash);
+    }
+
+    .btn-nav-action {
+      background: var(--wc-ocean);
+      color: #fff !important;
+      border-radius: 20px !important;
+      padding: 0.4rem 1.1rem !important;
+      box-shadow: var(--shadow-brush);
+    }
+    .btn-nav-action:hover {
+      background: var(--wc-ocean-deep) !important;
+      transform: translateY(-2px);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Hero Section 水彩主視覺 */
+    .hero {
+      padding: 4.5rem 0 3.5rem;
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-watercolor-blob {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 650px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(169, 214, 229, 0.45) 0%, rgba(244, 162, 97, 0.2) 60%, transparent 80%);
+      filter: blur(40px);
+      z-index: -1;
+      border-radius: 50% 60% 40% 70%;
+      animation: pulseBlob 9s ease-in-out infinite alternate;
+    }
+
+    .badge-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--card-bg);
+      border: 1.5px solid var(--wc-ochre);
+      color: var(--wc-ocean-deep);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 3px 10px rgba(212, 163, 115, 0.2);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 900;
+      color: var(--ink-dark);
+      letter-spacing: -0.5px;
+      line-height: 1.25;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-subtitle {
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+      color: var(--wc-ocean-deep);
+      font-weight: 600;
+      letter-spacing: 0.8px;
+      margin-bottom: 1.6rem;
+    }
+
+    /* 水彩筆觸引言方塊 */
+    .hero-quote-card {
+      max-width: 820px;
+      margin: 0 auto 2.5rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 239, 227, 0.85));
+      border: 2px solid rgba(212, 163, 115, 0.45);
+      border-radius: var(--radius-organic);
+      padding: 1.8rem 2.2rem;
+      box-shadow: var(--shadow-md);
+      position: relative;
+    }
+
+    .hero-quote-card::before {
+      content: "“";
+      position: absolute;
+      top: -15px;
+      left: 25px;
+      font-size: 3.5rem;
+      color: var(--wc-coral);
+      font-family: Georgia, serif;
+      line-height: 1;
+      opacity: 0.7;
+    }
+
+    .hero-quote-main {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ink-dark);
+      line-height: 1.7;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-quote-en {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    .hero-teacher-tag {
+      margin-top: 1rem;
+      display: inline-block;
+      font-size: 0.95rem;
+      color: var(--wc-sage);
+      background: var(--wc-sage-wash);
+      padding: 0.3rem 1rem;
+      border-radius: 12px;
+      font-weight: 600;
+    }
+
+    /* 快捷按鈕群 */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.1rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn-brush {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.75rem 1.7rem;
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .btn-primary {
+      background: var(--wc-ocean-deep);
+      color: #fff;
+      box-shadow: 0 6px 16px rgba(42, 111, 151, 0.3);
+    }
+    .btn-primary:hover {
+      background: var(--wc-ocean);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 22px rgba(42, 111, 151, 0.38);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--wc-terracotta);
+      border-color: var(--wc-terracotta);
+      box-shadow: 0 4px 12px rgba(217, 107, 82, 0.15);
+    }
+    .btn-secondary:hover {
+      background: var(--wc-coral-wash);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    .btn-tertiary {
+      background: var(--card-bg);
+      color: var(--wc-sage);
+      border-color: var(--wc-sage);
+      box-shadow: 0 4px 12px rgba(82, 121, 111, 0.15);
+    }
+    .btn-tertiary:hover {
+      background: var(--wc-sage-wash);
+      transform: translateY(-3px) scale(1.02);
+    }
+
+    /* Section 通用樣式 */
+    section {
+      padding: 4rem 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--wc-terracotta);
+      margin-bottom: 0.4rem;
+      background: var(--wc-coral-wash);
+      padding: 0.2rem 0.8rem;
+      border-radius: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      font-weight: 800;
+      color: var(--ink-dark);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 15%;
+      width: 70%;
+      height: 7px;
+      background: var(--wc-gold);
+      opacity: 0.55;
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 680px;
+      margin: 0.8rem auto 0;
+    }
+
+    /* 3 大修課超能力卡片 */
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius-soft);
+      padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pillar-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--wc-ochre);
+    }
+
+    .pillar-card::before {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      z-index: 0;
+      opacity: 0.35;
+      transition: transform 0.4s ease;
+    }
+
+    .pillar-card.ocean::before { background: var(--wc-ocean-light); }
+    .pillar-card.coral::before { background: var(--wc-coral); }
+    .pillar-card.sage::before { background: var(--wc-moss); }
+
+    .pillar-card:hover::before {
+      transform: scale(1.4);
+    }
+
+    .pillar-icon {
+      font-size: 2.8rem;
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pillar-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--ink-dark);
+      margin-bottom: 0.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pillar-en {
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.95rem;
+      color: var(--wc-ocean-deep);
+      font-weight: 600;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pillar-desc {
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    .pillar-tags {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .tag-item {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--ink-soft);
+    }
+
+    /* 上課流程：三階段任務模式 */
+    .workflow-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+
+    @media (max-width: 860px) {
+      .workflow-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 2px dashed rgba(212, 163, 115, 0.5);
+      border-radius: 24px;
+      padding: 2rem 1.6rem;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .step-card:hover {
+      background: #ffffff;
+      border-style: solid;
+      border-color: var(--wc-ocean);
+      transform: translateY(-4px);
+    }
+
+    .step-number {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--wc-gold);
+      color: var(--ink-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.3rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-brush);
+    }
+
+    .step-card:nth-child(2) .step-number {
+      background: var(--wc-coral);
+      color: #fff;
+    }
+    .step-card:nth-child(3) .step-number {
+      background: var(--wc-sage);
+      color: #fff;
+    }
+
+    .step-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+      color: var(--ink-dark);
+    }
+
+    .step-subtitle {
+      font-size: 0.9rem;
+      color: var(--wc-ocean-deep);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .step-list {
+      list-style: none;
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+
+    .step-list li {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .step-list li::before {
+      content: "✦";
+      color: var(--wc-coral);
+      font-size: 0.85rem;
+    }
+
+    /* 🎒 課前準備清單：互動式勾選框 */
+    .prep-box {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 239, 227, 0.9));
+      border: 2px solid var(--wc-ochre);
+      border-radius: var(--radius-soft);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 3rem;
+    }
+
+    .prep-progress-wrap {
+      margin-bottom: 2rem;
+    }
+
+    .prep-progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 0.6rem;
+      color: var(--wc-ocean-deep);
+    }
+
+    .progress-bar-track {
+      width: 100%;
+      height: 14px;
+      background: rgba(212, 163, 115, 0.2);
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 2px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--wc-gold), var(--wc-coral), var(--wc-ocean));
+      border-radius: 20px;
+      transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .prep-checklist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .check-item {
+      background: #ffffff;
+      border: 1.5px solid rgba(212, 163, 115, 0.35);
+      border-radius: 16px;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.25s ease;
+    }
+
+    .check-item:hover {
+      border-color: var(--wc-coral);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .check-item.checked {
+      background: var(--wc-sage-wash);
+      border-color: var(--wc-sage);
+    }
+
+    .custom-checkbox {
+      width: 24px;
+      height: 24px;
+      border-radius: 7px;
+      border: 2px solid var(--wc-ochre);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.2s ease;
+      background: #fff;
+    }
+
+    .check-item.checked .custom-checkbox {
+      background: var(--wc-sage);
+      border-color: var(--wc-sage);
+      color: #fff;
+    }
+
+    .check-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--ink-dark);
+      margin-bottom: 0.2rem;
+    }
+
+    .check-desc {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.5;
+    }
+
+    /* 探究工具箱：CER 與 DEAR */
+    .toolbox-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 2px solid var(--wc-ochre);
+      padding: 0.6rem 1.6rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: 50px;
+      cursor: pointer;
+      color: var(--ink-dark);
+      transition: all 0.25s ease;
+      font-family: inherit;
+    }
+
+    .tab-btn.active {
+      background: var(--wc-terracotta);
+      color: #fff;
+      border-color: var(--wc-terracotta);
+      box-shadow: var(--shadow-brush);
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .cer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .cer-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 1.8rem;
+      border-left: 6px solid var(--wc-ocean);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .cer-card:nth-child(2) {
+      border-left-color: var(--wc-gold);
+    }
+    .cer-card:nth-child(3) {
+      border-left-color: var(--wc-coral);
+    }
+
+    .cer-letter {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--wc-ocean-deep);
+      font-family: 'Quicksand', sans-serif;
+      margin-bottom: 0.3rem;
+    }
+
+    .cer-card:nth-child(2) .cer-letter { color: #b78a1a; }
+    .cer-card:nth-child(3) .cer-letter { color: var(--wc-terracotta); }
+
+    .cer-role {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .cer-prompt {
+      font-size: 0.92rem;
+      color: var(--wc-ocean-deep);
+      font-style: italic;
+      background: rgba(0, 0, 0, 0.03);
+      padding: 0.5rem 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* 18 週學習地圖：手帳時間軸 */
+    .timeline-filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-chip {
+      background: var(--card-bg);
+      border: 1.5px solid rgba(212, 163, 115, 0.4);
+      padding: 0.4rem 1.1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      color: var(--ink-soft);
+      font-family: inherit;
+    }
+
+    .filter-chip.active, .filter-chip:hover {
+      background: var(--wc-ocean-deep);
+      color: #fff;
+      border-color: var(--wc-ocean-deep);
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .week-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 18px;
+      padding: 1.4rem;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .week-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--wc-coral);
+    }
+
+    .week-card.highlight {
+      border: 2px solid var(--wc-coral);
+      background: linear-gradient(145deg, #ffffff, rgba(244, 162, 97, 0.1));
+    }
+
+    .week-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--wc-terracotta);
+      margin-bottom: 0.4rem;
+    }
+
+    .week-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--ink-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .week-task {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+      margin-top: auto;
+      padding-top: 0.6rem;
+      border-top: 1px dashed rgba(212, 163, 115, 0.3);
+    }
+
+    /* 句型小抄與一鍵複製 */
+    .sentence-box {
+      background: #ffffff;
+      border: 2px solid var(--wc-ochre);
+      border-radius: var(--radius-soft);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sentence-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px dashed rgba(212, 163, 115, 0.4);
+      gap: 1rem;
+      transition: background 0.2s ease;
+    }
+
+    .sentence-item:last-child {
+      border-bottom: none;
+    }
+
+    .sentence-item:hover {
+      background: var(--wc-gold-wash);
+      border-radius: 10px;
+    }
+
+    .sentence-text {
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      color: var(--wc-ocean-deep);
+      font-size: 1.05rem;
+    }
+
+    .sentence-zh {
+      font-size: 0.9rem;
+      color: var(--ink-faint);
+      margin-top: 0.2rem;
+      font-family: 'Noto Serif TC', serif;
+    }
+
+    .btn-copy {
+      background: var(--wc-ocean-light);
+      border: none;
+      color: var(--wc-ocean-deep);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      font-family: inherit;
+    }
+
+    .btn-copy:hover {
+      background: var(--wc-ocean);
+      color: #fff;
+    }
+
+    /* FAQ 手風琴 */
+    .faq-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .faq-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .faq-question {
+      padding: 1.2rem 1.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.08rem;
+      color: var(--ink-dark);
+      user-select: none;
+    }
+
+    .faq-question:hover {
+      background: var(--wc-gold-wash);
+    }
+
+    .faq-arrow {
+      font-size: 1.2rem;
+      color: var(--wc-ochre);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-answer {
+      padding: 0 1.6rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.35s ease;
+      font-size: 0.98rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .faq-card.open {
+      border-color: var(--wc-coral);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-card.open .faq-arrow {
+      transform: rotate(180deg);
+      color: var(--wc-coral);
+    }
+
+    .faq-card.open .faq-answer {
+      padding: 0 1.6rem 1.4rem;
+      max-height: 350px;
+    }
+
+    /* 頁尾 Footer */
+    footer {
+      background: #f1ebd9;
+      border-top: 2px dashed rgba(212, 163, 115, 0.5);
+      padding: 3.5rem 0 2rem;
+      margin-top: 4rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .footer-stamp {
+      display: inline-block;
+      border: 2px dashed var(--wc-terracotta);
+      color: var(--wc-terracotta);
+      padding: 0.5rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      transform: rotate(-2deg);
+    }
+
+    .footer-text {
+      color: var(--ink-soft);
+      font-size: 0.95rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.2rem;
+    }
+
+    .footer-links a {
+      color: var(--wc-ocean-deep);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Toast 通知 */
+    #toast {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--ink-dark);
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      border-radius: 30px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 10000;
+      pointer-events: none;
+    }
+
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* 動畫 Keyframes */
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(4deg); }
+    }
+
+    @keyframes pulseBlob {
+      0% { transform: translate(-50%, -50%) scale(0.9) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) scale(1.1) rotate(15deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RWD 調整 */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 3rem 0 2rem; }
+      .hero-quote-card { padding: 1.4rem 1.5rem; }
+      .prep-box { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 模擬水彩畫紙紋理層 -->
+  <div class="paper-texture-overlay"></div>
+
+  <!-- 導航列 -->
+  <nav>
+    <a href="#" class="nav-brand">
+      <span class="icon-globe">🌍</span>
+      <span>地球物理通論</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#philosophy">課程特色</a></li>
+      <li><a href="#workflow">上課方式</a></li>
+      <li><a href="#checklist">如何準備</a></li>
+      <li><a href="#toolbox">思考工具箱</a></li>
+      <li><a href="#roadmap">18週地圖</a></li>
+      <li><a href="#faq">新手FAQ</a></li>
+      <li><a href="#checklist" class="btn-nav-action">🎒 必備清單</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero 主視覺區塊 -->
+  <header class="hero">
+    <div class="hero-watercolor-blob"></div>
+    <div class="container">
+      <div class="badge-course">
+        <span>🍂 115 學年第 1 學期</span>
+        <span>·</span>
+        <span>臺北市立大學 地生系二年級</span>
+      </div>
+
+      <h1>地球物理通論：探索未知的地底冒險</h1>
+      <p class="hero-subtitle">General Geophysics — Course Orientation & Digital Workflow</p>
+
+      <div class="hero-quote-card">
+        <p class="hero-quote-main">「我們用地球物理來學習地球，用英文來接觸科學，用 AI 來協助探索，但最後用自己的思考來理解世界。」</p>
+        <p class="hero-quote-en">“We use geophysics to study the Earth, English to access science, AI to support exploration, and our own thinking to understand the world.”</p>
+        <div class="hero-teacher-tag">👨‍🏫 授課教師：陳達毅 老師 (Dr. Dayi Chen)</div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#checklist" class="btn-brush btn-primary">🎒 立即檢查課前準備 (Checklist)</a>
+        <a href="#workflow" class="btn-brush btn-secondary">💡 了解這門課怎麼上</a>
+        <a href="#roadmap" class="btn-brush btn-tertiary">🗺️ 瀏覽 18 週學習地圖</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 課程三大修課超能力 (Three Pillars) -->
+  <section id="philosophy">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Course Highlights</span>
+        <h2 class="section-title">這不是只背名詞的課，而是一場科學探究</h2>
+        <p class="section-desc">如果我們不知道板塊構造理論，只拿到地形、地震、重力與磁力數據，我們能自己推論出地球內部正在發生什麼事嗎？</p>
+      </div>
+
+      <div class="pillar-grid">
+        <!-- 卡片 1 -->
+        <div class="pillar-card ocean">
+          <div class="pillar-icon">🌋</div>
+          <h3 class="pillar-title">能看懂地球訊號的人</h3>
+          <div class="pillar-en">Understand Earth via Geophysical Data</div>
+          <p class="pillar-desc">
+            就像醫生用 X 光與超音波看診，地球物理學家用地震波、重力場、地磁與地熱流來「透視」看不見的地球內部構造與斷層。
+          </p>
+          <div class="pillar-tags">
+            <span class="tag-item">#震測探勘</span>
+            <span class="tag-item">#重力異常</span>
+            <span class="tag-item">#地磁條帶</span>
+            <span class="tag-item">#板塊構造</span>
+          </div>
+        </div>
+
+        <!-- 卡片 2 -->
+        <div class="pillar-card coral">
+          <div class="pillar-icon">🤖</div>
+          <h3 class="pillar-title">能駕馭現代工具的人</h3>
+          <div class="pillar-en">AI, Google Colab & PyGMT Workflow</div>
+          <p class="pillar-desc">
+            告別死板紙筆！我們在雲端執行 Python 程式、用 PyGMT 繪製高解析地圖，並讓 AI（Gemini/Codex）成為你專屬的探究思考與除錯夥伴。
+          </p>
+          <div class="pillar-tags">
+            <span class="tag-item">#GoogleColab</span>
+            <span class="tag-item">#PyGMT繪圖</span>
+            <span class="tag-item">#AI協作批判</span>
+            <span class="tag-item">#3D列印地質模型</span>
+          </div>
+        </div>
+
+        <!-- 卡片 3 -->
+        <div class="pillar-card sage">
+          <div class="pillar-icon">🗣️</div>
+          <h3 class="pillar-title">能清楚表達思考的人</h3>
+          <div class="pillar-en">CLIL Bilingual & CER Argumentation</div>
+          <p class="pillar-desc">
+            不是來考英文文法，而是學會用科學家常用的英文句型提出 Claim（主張）、尋找 Evidence（證據）、建構 Reasoning（推理），並公開展示於 GitHub。
+          </p>
+          <div class="pillar-tags">
+            <span class="tag-item">#CLIL雙語</span>
+            <span class="tag-item">#CER科學論證</span>
+            <span class="tag-item">#DEAR建模</span>
+            <span class="tag-item">#GitHubPages</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 上課方式介紹 (How Class Works) -->
+  <section id="workflow" style="background: rgba(245, 239, 227, 0.5);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Classroom Workflow</span>
+        <h2 class="section-title">任務導向的三階段學習模式</h2>
+        <p class="section-desc">每一堂課都是以真實任務為核心，老師全程示範並錄影，同學分組協作，最後發表你的探究成果。</p>
+      </div>
+
+      <div class="workflow-container">
+        <!-- 階段 1 -->
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3 class="step-title">老師完整示範</h3>
+          <div class="step-subtitle">Demonstration & Guidance</div>
+          <ul class="step-list">
+            <li>示範如何向 AI 提出高品質探究問題</li>
+            <li>示範 Google Colab 程式撰寫與 PyGMT 地圖繪製</li>
+            <li>示範如何批判檢查 AI 回覆是否合理</li>
+            <li>全程錄影留存，不必擔心下課忘記操作步驟</li>
+          </ul>
+        </div>
+
+        <!-- 階段 2 -->
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3 class="step-title">小組動手實作</h3>
+          <div class="step-subtitle">Teamwork & AI Interaction</div>
+          <ul class="step-list">
+            <li>2–3 人一組，互相討論分工（Data / Explanation / Web）</li>
+            <li>每位組員實際執行程式並記錄個人的 AI 提問歷程</li>
+            <li>保留探究對話紀錄（AI Interaction Log）作為學習證據</li>
+            <li>遇到困難先問 AI、互相討論，再向老師提問</li>
+          </ul>
+        </div>
+
+        <!-- 階段 3 -->
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3 class="step-title">成果分享與答辯</h3>
+          <div class="step-subtitle">Presentation & Model Revision</div>
+          <ul class="step-list">
+            <li>用觀測資料與地圖向全班說明自己的科學模型</li>
+            <li>練習運用簡易英文科學句型進行表達</li>
+            <li>接受同儕與老師的友善提問，發現限制並修正模型</li>
+            <li>將每次作業整合，最終部署成 GitHub Pages 公開網站</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎒 如何準備？課前必備互動清單 (Preparation Checklist) -->
+  <section id="checklist">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Preparation & Survival Kit</span>
+        <h2 class="section-title">上課前我要準備什麼？</h2>
+        <p class="section-desc">點擊下方方格完成自我檢核，即時查看你的「地球物理探險準備度」！</p>
+      </div>
+
+      <div class="prep-box">
+        <div class="prep-progress-wrap">
+          <div class="prep-progress-label">
+            <span>🎒 裝備完成進度</span>
+            <span id="progress-percent">0%</span>
+          </div>
+          <div class="progress-bar-track">
+            <div class="progress-bar-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <div class="prep-checklist" id="checklist-container">
+          <!-- Check 1 -->
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-checkbox">✔</div>
+            <div>
+              <div class="check-title">1. 可正常上網的筆記型電腦</div>
+              <div class="check-desc">課堂需要直接在瀏覽器操作雲端程式與寫作，請確認充飽電或攜帶電源線。</div>
+            </div>
+          </div>
+
+          <!-- Check 2 -->
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-checkbox">✔</div>
+            <div>
+              <div class="check-title">2. Google 帳號 (啟用 Colab)</div>
+              <div class="check-desc">不需要在電腦安裝複雜環境，我們使用 Google 提供的免費 Colab 雲端筆記本。</div>
+            </div>
+          </div>
+
+          <!-- Check 3 -->
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-checkbox">✔</div>
+            <div>
+              <div class="check-title">3. 註冊 GitHub 帳號</div>
+              <div class="check-desc">準備一個 GitHub 帳號，建立專題儲存庫（Repository），累積自己的數位作品集。</div>
+            </div>
+          </div>
+
+          <!-- Check 4 -->
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-checkbox">✔</div>
+            <div>
+              <div class="check-title">4. 認識 AI 協作工具 (Gemini)</div>
+              <div class="check-desc">開啟 Google Gemini，練習不要直接要答案，而是請 AI 提供假說與引導思考。</div>
+            </div>
+          </div>
+
+          <!-- Check 5 -->
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-checkbox">✔</div>
+            <div>
+              <div class="check-title">5. 保持開放與懷疑的探究心態</div>
+              <div class="check-desc">科學不只在背答案，重要的是「你的證據是什麼？」以及「AI 說的真的合理嗎？」。</div>
+            </div>
+          </div>
+
+          <!-- Check 6 -->
+          <div class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-checkbox">✔</div>
+            <div>
+              <div class="check-title">6. 2–3 人組隊找好隊友</div>
+              <div class="check-desc">課堂中採團隊互助，推選組長，包含程式、英文說明與網頁美術設計各展所長。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 思考工具箱：CER 與 DEAR (Scientific Toolbox) -->
+  <section id="toolbox" style="background: rgba(169, 214, 229, 0.15);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Scientific Thinking Framework</span>
+        <h2 class="section-title">科學家的思考工具箱</h2>
+        <p class="section-desc">這門課我們不背誦零碎知識，我們用兩種強大框架有意識地理清思路：</p>
+      </div>
+
+      <div class="toolbox-tabs">
+        <button class="tab-btn active" onclick="switchTab('cer', this)">🎯 CER 論證框架</button>
+        <button class="tab-btn" onclick="switchTab('dear', this)">🔄 DEAR 建模歷程</button>
+        <button class="tab-btn" onclick="switchTab('clil', this)">🗣️ 必備英文句型小抄</button>
+      </div>
+
+      <!-- Tab 1: CER -->
+      <div id="tab-cer" class="tab-content active">
+        <div class="cer-grid">
+          <div class="cer-card">
+            <div class="cer-letter">C — Claim</div>
+            <div class="cer-role">主張：我認為事情是怎樣？</div>
+            <div class="cer-prompt">“What do I think is happening?”</div>
+            <p style="font-size: 0.95rem; color: var(--ink-soft);">
+              範例：我認為全球地震並不是隨機平均分布，而是集中在特定的帶狀邊界上。
+            </p>
+          </div>
+
+          <div class="cer-card">
+            <div class="cer-letter">E — Evidence</div>
+            <div class="cer-role">證據：我有什麼資料支持？</div>
+            <div class="cer-prompt">“What data support my claim?”</div>
+            <p style="font-size: 0.95rem; color: var(--ink-soft);">
+              範例：從全球地震活動地圖中，可以清楚看到地震震央密集沿著海溝與中洋脊排列。
+            </p>
+          </div>
+
+          <div class="cer-card">
+            <div class="cer-letter">R — Reasoning</div>
+            <div class="cer-role">推理：為什麼證據能支持主張？</div>
+            <div class="cer-prompt">“Why does this evidence support my claim?”</div>
+            <p style="font-size: 0.95rem; color: var(--ink-soft);">
+              範例：根據板塊構造理論，板塊邊界是應力累積與釋放的場所，因此會產生成帶狀的地震活動。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: DEAR -->
+      <div id="tab-dear" class="tab-content">
+        <div class="cer-grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+          <div class="cer-card">
+            <div class="cer-letter" style="color: var(--wc-ocean);">D</div>
+            <div class="cer-role">Design a model</div>
+            <p style="font-size: 0.92rem; color: var(--ink-soft);">觀察現象後，提出最初步的簡化想像或假說模型。</p>
+          </div>
+          <div class="cer-card">
+            <div class="cer-letter" style="color: var(--wc-gold);">E</div>
+            <div class="cer-role">Elaborate the model</div>
+            <p style="font-size: 0.92rem; color: var(--ink-soft);">納入更多實際觀測資料（如震源深度、重力值），使模型更精準。</p>
+          </div>
+          <div class="cer-card">
+            <div class="cer-letter" style="color: var(--wc-coral);">A</div>
+            <div class="cer-role">Apply the model</div>
+            <p style="font-size: 0.92rem; color: var(--ink-soft);">運用建構好的模型去解釋新區域或預測尚未觀測的現象。</p>
+          </div>
+          <div class="cer-card">
+            <div class="cer-letter" style="color: var(--wc-sage);">R</div>
+            <div class="cer-role">Revise the model</div>
+            <p style="font-size: 0.92rem; color: var(--ink-soft);">當發現模型無法解釋的反例時，重新審視證據並修改模型！</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: CLIL Sentences -->
+      <div id="tab-clil" class="tab-content">
+        <div class="sentence-box">
+          <div class="sentence-item">
+            <div>
+              <div class="sentence-text">We observe that ______ .</div>
+              <div class="sentence-zh">我們觀察到……（描述資料與地圖現象）</div>
+            </div>
+            <button class="btn-copy" onclick="copySentence('We observe that ______ .')">複製句型</button>
+          </div>
+
+          <div class="sentence-item">
+            <div>
+              <div class="sentence-text">The data show that ______ .</div>
+              <div class="sentence-zh">資料顯示……（以客觀數據為依據）</div>
+            </div>
+            <button class="btn-copy" onclick="copySentence('The data show that ______ .')">複製句型</button>
+          </div>
+
+          <div class="sentence-item">
+            <div>
+              <div class="sentence-text">We hypothesize that ______ .</div>
+              <div class="sentence-zh">我們假設……（提出初步假說）</div>
+            </div>
+            <button class="btn-copy" onclick="copySentence('We hypothesize that ______ .')">複製句型</button>
+          </div>
+
+          <div class="sentence-item">
+            <div>
+              <div class="sentence-text">AI suggested that ______, but we verified it by ______ .</div>
+              <div class="sentence-zh">AI 建議了……，但我們透過……進行了驗證（展現 AI 批判素養）</div>
+            </div>
+            <button class="btn-copy" onclick="copySentence('AI suggested that ______, but we verified it by ______ .')">複製句型</button>
+          </div>
+
+          <div class="sentence-item">
+            <div>
+              <div class="sentence-text">Therefore, we revised our model because ______ .</div>
+              <div class="sentence-zh">因此我們修改了模型，因為……（科學模型迭代）</div>
+            </div>
+            <button class="btn-copy" onclick="copySentence('Therefore, we revised our model because ______ .')">複製句型</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 18 週學習地圖 (18-Week Interactive Adventure) -->
+  <section id="roadmap">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">18-Week Adventure Map</span>
+        <h2 class="section-title">18 週精彩學習旅程</h2>
+        <p class="section-desc">從第 1 週的工具啟動，到親手進行折射探勘、重力場 3D 建模，最後在 GitHub 發布個人作品！</p>
+      </div>
+
+      <div class="timeline-filter-bar">
+        <button class="filter-chip active" onclick="filterWeeks('all', this)">全部 18 週</button>
+        <button class="filter-chip" onclick="filterWeeks('tool', this)">💻 工具與地圖 (W1-4)</button>
+        <button class="filter-chip" onclick="filterWeeks('seismic', this)">⚡ 折射震測 (W5-8)</button>
+        <button class="filter-chip" onclick="filterWeeks('gravity', this)">🌍 重力與地熱 (W9-14)</button>
+        <button class="filter-chip" onclick="filterWeeks('project', this)">🚀 專題發表與參訪 (W15-18)</button>
+      </div>
+
+      <div class="timeline-grid" id="timeline-container">
+        <!-- Week 1 -->
+        <div class="week-card highlight" data-category="tool">
+          <span class="week-badge">Week 01 · 今日首航</span>
+          <h4 class="week-title">課程說明與系統安裝</h4>
+          <div class="week-task">認識 8 大任務模式、啟動 Colab 與 GitHub、體驗首發 Gemini 批判式探究。</div>
+        </div>
+
+        <!-- Week 2 -->
+        <div class="week-card" data-category="tool">
+          <span class="week-badge">Week 02 · 視覺化</span>
+          <h4 class="week-title">PyGMT 繪製全球地圖</h4>
+          <div class="week-task">用 Python 畫出震撼的全球地形起伏，標示出深海溝與中洋脊。</div>
+        </div>
+
+        <!-- Week 3-4 -->
+        <div class="week-card" data-category="tool">
+          <span class="week-badge">Week 03–04 · 實體化</span>
+          <h4 class="week-title">板塊構造與 3D 建模列印</h4>
+          <div class="week-task">將台灣與日本海溝轉為 3D 模型，親手觸摸實體模型探討隱沒帶。</div>
+        </div>
+
+        <!-- Week 5 -->
+        <div class="week-card highlight" data-category="seismic">
+          <span class="week-badge">Week 05 · 野外實戰</span>
+          <h4 class="week-title">校園野外實驗：折射探勘</h4>
+          <div class="week-task">走出教室！在校園草坪鋪設受震線，敲擊震源，實地測量地底震波速度。</div>
+        </div>
+
+        <!-- Week 6-7 -->
+        <div class="week-card" data-category="seismic">
+          <span class="week-badge">Week 06–07 · 原理解析</span>
+          <h4 class="week-title">折射震測原理與走時模型</h4>
+          <div class="week-task">繪製走時曲線（Travel-Time Curves），計算校園地下地層深度與震波速度。</div>
+        </div>
+
+        <!-- Week 8 -->
+        <div class="week-card" data-category="seismic">
+          <span class="week-badge">Week 08 · 概念檢核</span>
+          <h4 class="week-title">期中考 (40%)</h4>
+          <div class="week-task">檢驗地球物理基本概念、震測傳播原理與科學論證能力。</div>
+        </div>
+
+        <!-- Week 9-10 -->
+        <div class="week-card" data-category="gravity">
+          <span class="week-badge">Week 09–10 · 重力場</span>
+          <h4 class="week-title">重力異常與 Geoid 3D 建模</h4>
+          <div class="week-task">看見看不見的地底密度差異！推論山根與沉積盆地，列印大地水準面模型。</div>
+        </div>
+
+        <!-- Week 11 -->
+        <div class="week-card" data-category="gravity">
+          <span class="week-badge">Week 11 · 產學連結</span>
+          <h4 class="week-title">業界與專家專題演講</h4>
+          <div class="week-task">邀請第一線地球物理與防災專家，分享最新科技應用與未來職涯方向。</div>
+        </div>
+
+        <!-- Week 12-14 -->
+        <div class="week-card" data-category="gravity">
+          <span class="week-badge">Week 12–14 · 能源地科</span>
+          <h4 class="week-title">地熱、地電與地磁條帶</h4>
+          <div class="week-task">探索綠能地熱探勘、地電阻探測地下水，以及海底擴張的地磁倒轉印記。</div>
+        </div>
+
+        <!-- Week 15-16 -->
+        <div class="week-card highlight" data-category="project">
+          <span class="week-badge">Week 15–16 · 榮耀成果</span>
+          <h4 class="week-title">期末專題發表 (GitHub Pages)</h4>
+          <div class="week-task">公開發表小組專題網站！展現 PyGMT 繪圖、AI 探究紀錄與雙語簡報。</div>
+        </div>
+
+        <!-- Week 17-18 -->
+        <div class="week-card" data-category="project">
+          <span class="week-badge">Week 17–18 · 走出校園</span>
+          <h4 class="week-title">實習與參訪觀摩</h4>
+          <div class="week-task">前往氣象署、地質調查所或實務探勘場域，見證地球物理真實運作！</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 評分標準小卡 (Grading Policy) -->
+  <section style="background: rgba(245, 239, 227, 0.6);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Grading & Evaluation</span>
+        <h2 class="section-title">學期評量方式</h2>
+        <p class="section-desc">我們重視每一位同學「探究歷程」與「實作過程」，而不僅僅是最後的標準答案！</p>
+      </div>
+
+      <div class="cer-grid">
+        <div class="cer-card" style="border-left-color: var(--wc-ocean);">
+          <div class="cer-letter" style="color: var(--wc-ocean-deep);">40%</div>
+          <div class="cer-role">期中考 (Midterm)</div>
+          <p style="font-size: 0.95rem; color: var(--ink-soft);">
+            檢核地球物理核心概念、震波走時公式原理、重力與板塊構造分析。
+          </p>
+        </div>
+
+        <div class="cer-card" style="border-left-color: var(--wc-coral);">
+          <div class="cer-letter" style="color: var(--wc-coral);">50%</div>
+          <div class="cer-role">實作作業與期末專題網站</div>
+          <p style="font-size: 0.95rem; color: var(--ink-soft);">
+            Colab 筆記本程式執行、PyGMT 製圖、AI 對話批判紀錄、GitHub Pages 公開成果。
+          </p>
+        </div>
+
+        <div class="cer-card" style="border-left-color: var(--wc-sage);">
+          <div class="cer-letter" style="color: var(--wc-sage);">10%</div>
+          <div class="cer-role">平時參與與 Exit Ticket</div>
+          <p style="font-size: 0.95rem; color: var(--ink-soft);">
+            課堂出席、提問討論、分組協作與每週課堂末的 3 句話學習反思。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新手生存常見問題 (FAQ) -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-eyebrow">Got Questions?</span>
+        <h2 class="section-title">新手常問的小疑問</h2>
+        <p class="section-desc">第一次上這種類型的課嗎？別緊張，來看看大家的常見問題：</p>
+      </div>
+
+      <div class="faq-grid">
+        <div class="faq-card open" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Q1. 我英文不夠流暢，這門課會不會聽不懂或很吃力？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            完全不用擔心！老師會提供完整的中英對照教材與講稿。這門課不是英文文法課，而是學會使用科學家常用的專有名詞與核心句型（例如：The data show that...）。只要願意嘗試，漸漸就會自然習慣用英文描述現象！
+          </div>
+        </div>
+
+        <div class="faq-card" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Q2. 我以前從來沒有寫過 Python 程式，能跟得上嗎？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            絕對跟得上！我們使用 Google 免費提供的 Colab 雲端平台，不需要繁雜的電腦設定。每一行程式老師都會親自示範，並提供完整範本。遇到 Bug 時，我們還會教你如何問 AI 來排錯與修改。
+          </div>
+        </div>
+
+        <div class="faq-card" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Q3. 作業可以用 AI 協作嗎？老師會抓抄襲嗎？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            我們非常歡迎大家聰明使用 AI！但重點是「不能直接把 AI 當成答案複製貼上」。你需要保留提問的 Prompt、AI 給的回覆、以及你自己如何懷疑和透過資料驗證的歷程（即 AI Interaction Log）。只要清楚記錄你的思考過程，就是一份極高分的作業！
+          </div>
+        </div>
+
+        <div class="faq-card" onclick="toggleFaq(this)">
+          <div class="faq-question">
+            <span>Q4. 什麼是 GitHub Pages？期末專題要怎麼交？</span>
+            <span class="faq-arrow">▼</span>
+          </div>
+          <div class="faq-answer">
+            GitHub Pages 是能把你的代碼與網頁免費公開發布成網站的服務。期末小組作業不再只是一份沉睡在硬碟裡的 Word 檔，而是一個全世界都能造訪瀏覽的精美專題網站，未來還可以直接放進你的升學或求職個人履歷！
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 水彩頁尾 (Footer) -->
+  <footer>
+    <div class="container">
+      <div class="footer-stamp">✨ 探索地球 · 數位探究 · 擁抱科學</div>
+      <h3 style="font-weight: 800; font-size: 1.3rem; margin-bottom: 0.5rem; color: var(--ink-dark);">
+        地球物理通論 General Geophysics
+      </h3>
+      <p class="footer-text">
+        臺北市立大學 地球環境暨生物資源學系 115 學年度第 1 學期<br>
+        授課教師：陳達毅 老師 (Dr. Dayi Chen)
+      </p>
+      <div class="footer-links">
+        <a href="README.md">📖 閱讀專案 README</a>
+        <span>·</span>
+        <a href="#checklist">🎒 課前準備清單</a>
+        <span>·</span>
+        <a href="#roadmap">🗺️ 18 週學習地圖</a>
+        <span>·</span>
+        <a href="#">🔝 回到頂端</a>
+      </div>
+      <p style="font-size: 0.82rem; color: var(--ink-faint); margin-top: 1.8rem;">
+        Designed with watercolor aesthetics for GitHub Pages deployment. © 2026 UTaipei DEER.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Toast 訊息小卡 -->
+  <div id="toast">已複製句型到剪貼簿！</div>
+
+  <!-- 互動邏輯 JavaScript -->
+  <script>
+    // 1. 課前清單點選與進度條計算
+    function updateProgress() {
+      const items = document.querySelectorAll('.check-item');
+      const checkedItems = document.querySelectorAll('.check-item.checked');
+      const total = items.length;
+      const done = checkedItems.length;
+      const percent = Math.round((done / total) * 100);
+
+      document.getElementById('progress-percent').innerText = `${done}/${total} (${percent}%)`;
+      document.getElementById('progress-fill').style.width = `${percent}%`;
+
+      if (done === total) {
+        showToast('🎉 太棒了！您已完成所有課前準備，隨時可以啟航！');
+      }
+    }
+
+    function toggleCheck(el) {
+      el.classList.toggle('checked');
+      updateProgress();
+    }
+
+    // 2. 思考工具箱 Tab 切換
+    function switchTab(tabId, btnEl) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+
+      btnEl.classList.add('active');
+      const target = document.getElementById('tab-' + tabId);
+      if (target) target.classList.add('active');
+    }
+
+    // 3. 18 週地圖分類篩選
+    function filterWeeks(category, btnEl) {
+      document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active'));
+      btnEl.classList.add('active');
+
+      const cards = document.querySelectorAll('.week-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 4. FAQ 手風琴切換
+    function toggleFaq(card) {
+      const isOpen = card.classList.contains('open');
+      document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+      if (!isOpen) {
+        card.classList.add('open');
+      }
+    }
+
+    // 5. 複製句型與 Toast 通知
+    function copySentence(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`已複製：「${text}」`);
+      }).catch(err => {
+        showToast('複製失敗，請手動選取複製');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    // 頁面初始化
+    document.addEventListener('DOMContentLoaded', () => {
+      updateProgress();
+    });
+  </script>
+</body>
+</html>
