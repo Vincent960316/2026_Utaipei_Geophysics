@@ -1,56 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>地球物理通論 General Geophysics ｜ 北市大地生系 陳達毅老師</title>
-  <meta name="description" content="臺北市立大學地球環境暨生物資源學系《地球物理通論》課程學習與指引網頁。融合 CLIL 雙語、CER 科學論證、DEAR 建模、AI 批判協作、PyGMT 視覺化與 GitHub Pages 數位成果發表。" />
+  <title>地球物理通論 General Geophysics ｜ 臺北市立大學 陳達毅老師</title>
+  <meta name="description"
+    content="臺北市立大學地球環境暨生物資源學系《地球物理通論》課程學習與指引網頁。融合 CLIL 雙語、CER 科學論證、DEAR 建模、AI 批判協作、PyGMT 視覺化與 GitHub Pages 數位成果發表。" />
 
-  <!-- Google Fonts: 溫暖手帳、日系人文、科技清晰字體 -->
+  <!-- Google Fonts: 雅緻襯線體、俐落無襯線體、等寬代碼字體 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Noto+Serif+TC:wght@400;600;700;900&family=Quicksand:wght@500;600;700&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Noto+Serif+TC:wght@400;600;700;900&family=Outfit:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <style>
     :root {
-      /* 水彩手繪調色盤 Watercolor Palette */
-      --paper-bg: #fbf8f2;
-      --paper-cream: #f5efe3;
-      --ink-dark: #22333b;
-      --ink-soft: #475569;
-      --ink-faint: #64748b;
-      
-      /* 水彩彩暈渲染色系 */
-      --wc-ocean-deep: #1d4e89;
-      --wc-ocean: #2a6f97;
-      --wc-ocean-light: #89c2d9;
-      --wc-ocean-wash: rgba(42, 111, 151, 0.1);
-      
-      --wc-terracotta: #c85a40;
-      --wc-coral: #e07a5f;
-      --wc-coral-wash: rgba(224, 122, 95, 0.12);
-      
-      --wc-sage: #3d6a5e;
-      --wc-moss: #6b9080;
-      --wc-sage-wash: rgba(61, 106, 94, 0.12);
-      
-      --wc-ochre: #c99355;
-      --wc-gold: #e5b85a;
-      --wc-gold-wash: rgba(229, 184, 90, 0.18);
-      
-      --wc-purple: #7b2cbf;
-      --wc-purple-wash: rgba(123, 44, 191, 0.1);
-      
-      --card-bg: rgba(255, 255, 255, 0.88);
-      --card-border: rgba(201, 147, 85, 0.32);
-      --shadow-sm: 0 4px 16px rgba(34, 51, 59, 0.05);
-      --shadow-md: 0 10px 30px rgba(34, 51, 59, 0.08);
-      --shadow-lg: 0 16px 40px rgba(34, 51, 59, 0.12);
-      --shadow-brush: 2px 4px 0 rgba(201, 147, 85, 0.38);
-      
-      /* 有機手繪圓角 */
-      --radius-organic: 255px 15px 225px 15px / 15px 225px 15px 255px;
-      --radius-soft: 20px 24px 20px 24px;
+      /* 調色盤：地質與海洋自然水彩層次 */
+      --bg-cream: #faf7f2;
+      --bg-surface: #ffffff;
+      --bg-card: rgba(255, 255, 255, 0.92);
+
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --text-light: #6b7280;
+
+      --c-ocean-deep: #1e3a8a;
+      --c-ocean: #2563eb;
+      --c-ocean-light: #dbeafe;
+      --c-ocean-wash: rgba(37, 99, 235, 0.08);
+
+      --c-terracotta: #c2410c;
+      --c-coral: #ea580c;
+      --c-coral-wash: rgba(234, 88, 12, 0.08);
+
+      --c-sage: #047857;
+      --c-moss: #10b981;
+      --c-sage-wash: rgba(16, 185, 129, 0.08);
+
+      --c-ochre: #b45309;
+      --c-amber: #f59e0b;
+      --c-amber-wash: rgba(245, 158, 11, 0.1);
+
+      --c-purple: #7c3aed;
+      --c-purple-wash: rgba(124, 58, 237, 0.08);
+
+      --border-soft: rgba(203, 213, 225, 0.8);
+      --border-warm: rgba(217, 119, 6, 0.25);
+
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 8px 24px rgba(31, 41, 55, 0.07);
+      --shadow-lg: 0 16px 36px rgba(31, 41, 55, 0.1);
+
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
     }
 
     * {
@@ -61,34 +66,27 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px;
+      scroll-padding-top: 85px;
     }
 
     body {
-      font-family: 'Kiwi Maru', 'Noto Serif TC', serif;
-      background-color: var(--paper-bg);
-      color: var(--ink-dark);
+      font-family: 'Outfit', 'Noto Serif TC', sans-serif;
+      background-color: var(--bg-cream);
+      color: var(--text-main);
       line-height: 1.8;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(137, 194, 217, 0.32) 0%, transparent 42%),
-        radial-gradient(circle at 92% 12%, rgba(224, 122, 95, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 50% 55%, rgba(107, 144, 128, 0.18) 0%, transparent 52%),
-        radial-gradient(circle at 88% 88%, rgba(229, 184, 90, 0.25) 0%, transparent 45%);
+      background-image:
+        radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.5) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(254, 215, 170, 0.4) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(209, 250, 229, 0.3) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(253, 230, 138, 0.35) 0px, transparent 50%);
       background-attachment: fixed;
+      overflow-x: hidden;
     }
 
-    /* 水彩畫紙紋理層 */
-    .paper-texture-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 999;
-      opacity: 0.28;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+    .container {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
     /* 頂部導航列 */
@@ -96,63 +94,64 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(251, 248, 242, 0.94);
-      backdrop-filter: blur(12px);
-      border-bottom: 2px dashed rgba(201, 147, 85, 0.45);
-      padding: 0.75rem 1.8rem;
+      background: rgba(250, 247, 242, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid var(--border-warm);
+      padding: 0.85rem 1.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: all 0.3s ease;
+      transition: all 0.25s ease;
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 0.7rem;
-      font-weight: 700;
+      gap: 0.65rem;
+      font-weight: 800;
       font-size: 1.25rem;
-      color: var(--wc-ocean-deep);
+      color: var(--c-ocean-deep);
       text-decoration: none;
+      letter-spacing: -0.3px;
     }
 
-    .nav-brand .icon-globe {
-      font-size: 1.7rem;
-      filter: drop-shadow(1px 2px 2px rgba(42, 111, 151, 0.25));
-      animation: float 4s ease-in-out infinite;
+    .nav-brand-icon {
+      font-size: 1.6rem;
+      filter: drop-shadow(0 2px 4px rgba(37, 99, 235, 0.2));
     }
 
     .nav-links {
       display: flex;
-      gap: 1.1rem;
+      gap: 0.85rem;
       list-style: none;
       align-items: center;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: var(--ink-dark);
+      color: var(--text-muted);
       font-weight: 600;
       font-size: 0.92rem;
-      padding: 0.35rem 0.7rem;
-      border-radius: 12px;
-      transition: all 0.25s ease;
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-sm);
+      transition: all 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--wc-coral);
-      background: var(--wc-coral-wash);
+      color: var(--c-ocean);
+      background: var(--c-ocean-wash);
     }
 
     .btn-nav-action {
-      background: var(--wc-ocean) !important;
+      background: var(--c-ocean-deep) !important;
       color: #fff !important;
-      border-radius: 20px !important;
-      padding: 0.45rem 1.1rem !important;
-      box-shadow: var(--shadow-brush);
+      padding: 0.45rem 1.15rem !important;
+      border-radius: 30px !important;
+      box-shadow: 0 4px 12px rgba(30, 58, 138, 0.25);
     }
+
     .btn-nav-action:hover {
-      background: var(--wc-ocean-deep) !important;
+      background: var(--c-ocean) !important;
       transform: translateY(-2px);
     }
 
@@ -162,213 +161,179 @@
       border: none;
       font-size: 1.6rem;
       cursor: pointer;
-      color: var(--ink-dark);
+      color: var(--text-main);
     }
 
-    /* Container */
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    /* Hero Section 水彩主視覺 */
+    /* Hero Section 主視覺 */
     .hero {
-      padding: 4.8rem 0 3.8rem;
-      position: relative;
+      padding: 4.5rem 0 3.5rem;
       text-align: center;
+      position: relative;
     }
 
-    .hero-watercolor-blob {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 720px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(137, 194, 217, 0.4) 0%, rgba(224, 122, 95, 0.18) 55%, transparent 75%);
-      filter: blur(45px);
-      z-index: -1;
-      border-radius: 50% 60% 40% 70%;
-      animation: pulseBlob 10s ease-in-out infinite alternate;
-    }
-
-    /* 頂部 Metadata 徽章群 (Aligning with README Badges) */
-    .badge-group {
+    .badge-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
       margin-bottom: 1.5rem;
     }
 
-    .badge-pill {
+    .pill-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      color: var(--ink-dark);
-      padding: 0.35rem 0.95rem;
-      border-radius: 50px;
-      font-size: 0.88rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
       font-weight: 600;
-      box-shadow: 0 2px 8px rgba(201, 147, 85, 0.15);
-      backdrop-filter: blur(4px);
+      color: var(--text-muted);
+      box-shadow: var(--shadow-sm);
     }
 
-    .badge-pill.primary {
-      border-color: var(--wc-ocean);
-      color: var(--wc-ocean-deep);
-      background: var(--wc-ocean-wash);
+    .pill-badge.primary {
+      border-color: #bfdbfe;
+      color: var(--c-ocean-deep);
+      background: #eff6ff;
     }
 
-    .badge-pill.coral {
-      border-color: var(--wc-coral);
-      color: var(--wc-terracotta);
-      background: var(--wc-coral-wash);
+    .pill-badge.coral {
+      border-color: #fed7aa;
+      color: var(--c-terracotta);
+      background: #fff7ed;
     }
 
-    .badge-pill.sage {
-      border-color: var(--wc-moss);
-      color: var(--wc-sage);
-      background: var(--wc-sage-wash);
+    .pill-badge.sage {
+      border-color: #a7f3d0;
+      color: var(--c-sage);
+      background: #ecfdf5;
     }
 
-    .badge-pill.gold {
-      border-color: var(--wc-gold);
-      color: #92690a;
-      background: var(--wc-gold-wash);
+    .pill-badge.amber {
+      border-color: #fde68a;
+      color: var(--c-ochre);
+      background: #fffbeb;
     }
 
     .hero h1 {
-      font-size: clamp(2.3rem, 5.2vw, 3.8rem);
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(2.3rem, 5vw, 3.6rem);
       font-weight: 900;
-      color: var(--ink-dark);
+      color: var(--c-ocean-deep);
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
       letter-spacing: -0.5px;
-      line-height: 1.28;
-      margin-bottom: 0.8rem;
     }
 
     .hero-subtitle {
-      font-family: 'Quicksand', sans-serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.48rem);
-      color: var(--wc-ocean-deep);
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      margin-bottom: 1.8rem;
+      font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+      font-weight: 600;
+      color: var(--c-ochre);
+      margin-bottom: 2rem;
     }
 
-    /* 水彩筆觸引言方塊 (README Core Philosophy) */
-    .hero-quote-card {
+    /* 核心哲學名言框 */
+    .philosophy-card {
       max-width: 860px;
       margin: 0 auto 2.5rem;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 239, 227, 0.9));
-      border: 2px solid rgba(201, 147, 85, 0.5);
-      border-radius: var(--radius-organic);
-      padding: 2rem 2.4rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(254, 243, 199, 0.45));
+      border: 1.5px solid var(--border-warm);
+      border-radius: var(--radius-lg);
+      padding: 2.2rem 2.5rem;
       box-shadow: var(--shadow-md);
       position: relative;
     }
 
-    .hero-quote-card::before {
+    .philosophy-card::before {
       content: "“";
       position: absolute;
-      top: -15px;
-      left: 25px;
-      font-size: 3.8rem;
-      color: var(--wc-coral);
+      top: -20px;
+      left: 30px;
+      font-size: 4.5rem;
+      color: var(--c-amber);
       font-family: Georgia, serif;
+      opacity: 0.6;
       line-height: 1;
-      opacity: 0.75;
     }
 
-    .hero-quote-main {
-      font-size: 1.28rem;
+    .philosophy-zh {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.3rem;
       font-weight: 700;
-      color: var(--ink-dark);
+      color: var(--text-main);
       line-height: 1.75;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
     }
 
-    .hero-quote-en {
-      font-family: 'Quicksand', sans-serif;
+    .philosophy-en {
       font-size: 1.05rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       font-style: italic;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
-    .hero-teacher-tag {
-      margin-top: 1.1rem;
+    .instructor-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.95rem;
-      color: var(--wc-sage);
-      background: var(--wc-sage-wash);
+      margin-top: 1.2rem;
+      background: var(--c-sage-wash);
+      color: var(--c-sage);
       padding: 0.35rem 1.1rem;
-      border-radius: 14px;
+      border-radius: 20px;
       font-weight: 700;
+      font-size: 0.95rem;
     }
 
-    /* 快捷按鈕群 */
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.1rem;
-      margin-top: 1.8rem;
+      gap: 1rem;
     }
 
-    .btn-brush {
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 1.02rem;
       padding: 0.75rem 1.6rem;
-      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 30px;
+      text-decoration: none;
       cursor: pointer;
-      border: 2px solid transparent;
+      transition: all 0.25s ease;
+      border: 1.5px solid transparent;
     }
 
-    .btn-primary {
-      background: var(--wc-ocean-deep);
+    .btn-main {
+      background: var(--c-ocean-deep);
       color: #fff;
-      box-shadow: 0 6px 16px rgba(29, 78, 137, 0.3);
-    }
-    .btn-primary:hover {
-      background: var(--wc-ocean);
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 10px 22px rgba(29, 78, 137, 0.38);
+      box-shadow: 0 4px 16px rgba(30, 58, 138, 0.25);
     }
 
-    .btn-secondary {
-      background: var(--card-bg);
-      color: var(--wc-terracotta);
-      border-color: var(--wc-terracotta);
-      box-shadow: 0 4px 12px rgba(200, 90, 64, 0.15);
-    }
-    .btn-secondary:hover {
-      background: var(--wc-coral-wash);
-      transform: translateY(-3px) scale(1.02);
+    .btn-main:hover {
+      background: var(--c-ocean);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(30, 58, 138, 0.35);
     }
 
-    .btn-tertiary {
-      background: var(--card-bg);
-      color: var(--wc-sage);
-      border-color: var(--wc-sage);
-      box-shadow: 0 4px 12px rgba(61, 106, 94, 0.15);
-    }
-    .btn-tertiary:hover {
-      background: var(--wc-sage-wash);
-      transform: translateY(-3px) scale(1.02);
+    .btn-outline {
+      background: var(--bg-surface);
+      border-color: var(--border-soft);
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
     }
 
-    /* Section 通用樣式 */
+    .btn-outline:hover {
+      border-color: var(--c-ocean);
+      color: var(--c-ocean);
+      transform: translateY(-2px);
+    }
+
+    /* Section 通用格式 */
     section {
       padding: 4.5rem 0;
       position: relative;
@@ -376,1033 +341,877 @@
 
     .section-header {
       text-align: center;
-      margin-bottom: 3.2rem;
+      margin-bottom: 3rem;
     }
 
-    .section-eyebrow {
+    .section-tag {
       display: inline-block;
-      font-size: 0.88rem;
-      font-weight: 700;
-      letter-spacing: 1.2px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      color: var(--wc-terracotta);
-      margin-bottom: 0.4rem;
-      background: var(--wc-coral-wash);
-      padding: 0.25rem 0.9rem;
+      color: var(--c-terracotta);
+      background: var(--c-coral-wash);
+      padding: 0.25rem 0.85rem;
       border-radius: 20px;
+      margin-bottom: 0.5rem;
     }
 
     .section-title {
-      font-size: clamp(1.85rem, 3.2vw, 2.5rem);
+      font-family: 'Noto Serif TC', serif;
+      font-size: clamp(1.85rem, 3.2vw, 2.4rem);
       font-weight: 800;
-      color: var(--ink-dark);
-      position: relative;
-      display: inline-block;
-    }
-
-    .section-title::after {
-      content: "";
-      position: absolute;
-      bottom: -6px;
-      left: 12%;
-      width: 76%;
-      height: 7px;
-      background: var(--wc-gold);
-      opacity: 0.55;
-      border-radius: 4px;
-      z-index: -1;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
     }
 
     .section-desc {
       font-size: 1.05rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       max-width: 720px;
-      margin: 0.8rem auto 0;
+      margin: 0 auto;
     }
 
     /* 3 大修課超能力卡片 */
-    .pillar-grid {
+    .card-grid-3 {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 1.8rem;
-      margin-bottom: 3rem;
     }
 
-    .pillar-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: var(--radius-soft);
+    .feature-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
       padding: 2.2rem 1.8rem;
       box-shadow: var(--shadow-sm);
-      position: relative;
-      overflow: hidden;
-      transition: all 0.35s ease;
+      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
     }
 
-    .pillar-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--wc-ochre);
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--c-ocean);
     }
 
-    .pillar-card::before {
-      content: "";
-      position: absolute;
-      top: -30px;
-      right: -30px;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      z-index: 0;
-      opacity: 0.35;
-      transition: transform 0.4s ease;
-    }
-
-    .pillar-card.ocean::before { background: var(--wc-ocean-light); }
-    .pillar-card.coral::before { background: var(--wc-coral); }
-    .pillar-card.sage::before { background: var(--wc-moss); }
-
-    .pillar-card:hover::before {
-      transform: scale(1.4);
-    }
-
-    .pillar-icon {
+    .feature-icon {
       font-size: 2.8rem;
       margin-bottom: 1.2rem;
-      position: relative;
-      z-index: 1;
     }
 
-    .pillar-title {
+    .feature-title {
+      font-family: 'Noto Serif TC', serif;
       font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--ink-dark);
+      font-weight: 800;
+      color: var(--text-main);
       margin-bottom: 0.4rem;
-      position: relative;
-      z-index: 1;
     }
 
-    .pillar-en {
-      font-family: 'Quicksand', sans-serif;
-      font-size: 0.95rem;
-      color: var(--wc-ocean-deep);
+    .feature-en {
+      font-size: 0.92rem;
       font-weight: 600;
+      color: var(--c-ocean);
       margin-bottom: 1rem;
-      position: relative;
-      z-index: 1;
     }
 
-    .pillar-desc {
+    .feature-desc {
       font-size: 0.98rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       line-height: 1.7;
-      position: relative;
-      z-index: 1;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
     }
 
-    .pillar-tags {
+    .badge-list {
       margin-top: auto;
       display: flex;
       flex-wrap: wrap;
-      gap: 0.45rem;
-      position: relative;
-      z-index: 1;
+      gap: 0.4rem;
     }
 
-    .tag-item {
-      font-size: 0.82rem;
+    .tag-sm {
+      font-size: 0.8rem;
       font-weight: 600;
+      background: rgba(0, 0, 0, 0.04);
+      color: var(--text-muted);
       padding: 0.2rem 0.65rem;
-      border-radius: 8px;
-      background: rgba(0, 0, 0, 0.05);
-      color: var(--ink-soft);
+      border-radius: 6px;
     }
 
-    /* CLIL 4C 整合架構卡片 (Content, Communication, Cognition, Culture) */
-    .four-c-box {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(245, 239, 227, 0.85));
-      border: 2px solid var(--card-border);
-      border-radius: var(--radius-soft);
+    /* CLIL 4C 整合架構專區 */
+    .four-c-wrapper {
+      margin-top: 3.5rem;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
       padding: 2.2rem 2.4rem;
       box-shadow: var(--shadow-sm);
-      margin-top: 2rem;
     }
 
-    .four-c-header {
+    .four-c-intro {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: 1.6rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px dashed rgba(201, 147, 85, 0.35);
+      padding-bottom: 1.2rem;
+      border-bottom: 1px dashed var(--border-soft);
+      margin-bottom: 1.8rem;
     }
 
-    .four-c-header h3 {
-      font-size: 1.3rem;
+    .four-c-intro h3 {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.35rem;
       font-weight: 800;
-      color: var(--ink-dark);
-    }
-
-    .four-c-header p {
-      font-size: 0.95rem;
-      color: var(--ink-soft);
+      color: var(--text-main);
     }
 
     .four-c-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 1.4rem;
     }
 
     .four-c-card {
-      background: #ffffff;
-      border: 1.5px solid rgba(201, 147, 85, 0.3);
-      border-radius: 16px;
+      background: var(--bg-cream);
+      border-radius: var(--radius-md);
       padding: 1.4rem;
-      transition: all 0.3s ease;
-      position: relative;
+      border: 1px solid var(--border-soft);
+      transition: all 0.25s ease;
     }
 
     .four-c-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-sm);
-      border-color: var(--wc-ocean);
+      background: #fff;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--c-ocean);
     }
 
-    .four-c-badge {
+    .c-badge {
       display: inline-block;
-      font-family: 'Quicksand', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      text-transform: uppercase;
+      font-size: 0.8rem;
+      font-weight: 800;
       padding: 0.2rem 0.65rem;
       border-radius: 6px;
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.65rem;
+      text-transform: uppercase;
     }
 
-    .four-c-card:nth-child(1) .four-c-badge { background: var(--wc-ocean-wash); color: var(--wc-ocean-deep); }
-    .four-c-card:nth-child(2) .four-c-badge { background: var(--wc-coral-wash); color: var(--wc-terracotta); }
-    .four-c-card:nth-child(3) .four-c-badge { background: var(--wc-gold-wash); color: #8e6205; }
-    .four-c-card:nth-child(4) .four-c-badge { background: var(--wc-sage-wash); color: var(--wc-sage); }
+    .c-badge.c1 {
+      background: #dbeafe;
+      color: var(--c-ocean-deep);
+    }
 
-    .four-c-title {
-      font-size: 1.15rem;
+    .c-badge.c2 {
+      background: #ffedd5;
+      color: var(--c-terracotta);
+    }
+
+    .c-badge.c3 {
+      background: #fef3c7;
+      color: var(--c-ochre);
+    }
+
+    .c-badge.c4 {
+      background: #d1fae5;
+      color: var(--c-sage);
+    }
+
+    .c-title {
       font-weight: 800;
-      color: var(--ink-dark);
+      font-size: 1.12rem;
       margin-bottom: 0.4rem;
+      color: var(--text-main);
     }
 
-    .four-c-desc {
+    .c-desc {
       font-size: 0.92rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
-    /* 上課流程：三階段任務模式 */
-    .workflow-container {
+    /* 三階段上課流程 */
+    .workflow-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.6rem;
-      position: relative;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
     }
 
-    @media (max-width: 860px) {
-      .workflow-container {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .step-card {
-      background: var(--card-bg);
-      border: 2px dashed rgba(201, 147, 85, 0.55);
-      border-radius: 24px;
+    .workflow-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
       padding: 2.2rem 1.8rem;
+      box-shadow: var(--shadow-sm);
       position: relative;
-      transition: all 0.3s ease;
     }
 
-    .step-card:hover {
-      background: #ffffff;
-      border-style: solid;
-      border-color: var(--wc-ocean);
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .step-number {
-      width: 48px;
-      height: 48px;
+    .step-badge {
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: var(--wc-gold);
-      color: var(--ink-dark);
+      background: var(--c-ocean-deep);
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       margin-bottom: 1.2rem;
-      box-shadow: var(--shadow-brush);
+      box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
     }
 
-    .step-card:nth-child(2) .step-number {
-      background: var(--wc-coral);
-      color: #fff;
-    }
-    .step-card:nth-child(3) .step-number {
-      background: var(--wc-sage);
-      color: #fff;
+    .workflow-card:nth-child(2) .step-badge {
+      background: var(--c-terracotta);
     }
 
-    .step-title {
+    .workflow-card:nth-child(3) .step-badge {
+      background: var(--c-sage);
+    }
+
+    .workflow-title {
       font-size: 1.3rem;
       font-weight: 800;
-      margin-bottom: 0.4rem;
-      color: var(--ink-dark);
+      margin-bottom: 0.35rem;
     }
 
-    .step-subtitle {
+    .workflow-subtitle {
       font-size: 0.92rem;
-      color: var(--wc-ocean-deep);
+      color: var(--c-ocean);
       font-weight: 600;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
-    .step-list {
+    .workflow-list {
       list-style: none;
       font-size: 0.95rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
     }
 
-    .step-list li {
-      margin-bottom: 0.6rem;
+    .workflow-list li {
+      margin-bottom: 0.65rem;
       display: flex;
       align-items: flex-start;
-      gap: 0.55rem;
+      gap: 0.5rem;
     }
 
-    .step-list li::before {
+    .workflow-list li::before {
       content: "✦";
-      color: var(--wc-coral);
-      font-size: 0.88rem;
+      color: var(--c-coral);
+      font-size: 0.85rem;
+      margin-top: 2px;
       flex-shrink: 0;
-      margin-top: 1px;
     }
 
-    /* 🚀 第一堂課 8 大通關任務清單 (Week 1 Onboarding Tasks 1~8) */
-    .task-section-box {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(245, 239, 227, 0.92));
-      border: 2px solid var(--wc-ochre);
-      border-radius: var(--radius-soft);
+    /* 🚀 第 1 週 8 大通關任務清單 */
+    .tasks-box {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
       padding: 2.5rem;
       box-shadow: var(--shadow-md);
     }
 
-    .task-progress-wrap {
-      margin-bottom: 2.2rem;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1.5px solid rgba(201, 147, 85, 0.35);
-      border-radius: 18px;
+    .progress-bar-card {
+      background: var(--bg-cream);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-md);
       padding: 1.4rem 1.8rem;
+      margin-bottom: 2rem;
     }
 
-    .task-progress-label {
+    .progress-label-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.08rem;
       margin-bottom: 0.8rem;
-      color: var(--wc-ocean-deep);
+      color: var(--c-ocean-deep);
     }
 
-    .progress-bar-track {
+    .progress-track {
       width: 100%;
-      height: 16px;
-      background: rgba(201, 147, 85, 0.2);
+      height: 14px;
+      background: #e2e8f0;
       border-radius: 20px;
       overflow: hidden;
-      padding: 2px;
     }
 
-    .progress-bar-fill {
+    .progress-bar {
       height: 100%;
       width: 0%;
-      background: linear-gradient(90deg, var(--wc-gold), var(--wc-coral), var(--wc-ocean));
+      background: linear-gradient(90deg, var(--c-amber), var(--c-coral), var(--c-ocean));
       border-radius: 20px;
-      transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: width 0.4s ease;
     }
 
-    .task-tools-bar {
+    .tasks-tools {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 0.8rem;
+      margin-top: 0.75rem;
       font-size: 0.88rem;
-      color: var(--ink-faint);
+      color: var(--text-light);
     }
 
-    .btn-reset-tasks {
+    .btn-reset {
       background: none;
-      border: 1px dashed var(--ink-faint);
-      color: var(--ink-soft);
+      border: 1px dashed var(--text-light);
       padding: 0.25rem 0.75rem;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 0.82rem;
       cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: inherit;
-    }
-    .btn-reset-tasks:hover {
-      background: rgba(0, 0, 0, 0.05);
-      color: var(--wc-terracotta);
-      border-color: var(--wc-terracotta);
+      color: var(--text-muted);
+      transition: all 0.2s;
     }
 
-    .task-grid {
+    .btn-reset:hover {
+      color: var(--c-terracotta);
+      border-color: var(--c-terracotta);
+      background: var(--c-coral-wash);
+    }
+
+    .tasks-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.3rem;
+      gap: 1.2rem;
     }
 
-    .task-item {
-      background: #ffffff;
-      border: 1.5px solid rgba(201, 147, 85, 0.35);
-      border-radius: 18px;
-      padding: 1.3rem 1.4rem;
+    .task-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.4rem;
       display: flex;
       align-items: flex-start;
       gap: 1rem;
       cursor: pointer;
       user-select: none;
       transition: all 0.25s ease;
-      position: relative;
     }
 
-    .task-item:hover {
-      border-color: var(--wc-coral);
-      transform: translateY(-3px);
+    .task-card:hover {
+      border-color: var(--c-ocean);
+      transform: translateY(-2px);
       box-shadow: var(--shadow-sm);
     }
 
-    .task-item.checked {
-      background: var(--wc-sage-wash);
-      border-color: var(--wc-sage);
+    .task-card.completed {
+      background: var(--c-sage-wash);
+      border-color: var(--c-moss);
     }
 
-    .task-checkbox {
-      width: 26px;
-      height: 26px;
-      border-radius: 8px;
-      border: 2px solid var(--wc-ochre);
+    .task-checkbox-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      border: 2px solid #cbd5e1;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       margin-top: 3px;
-      transition: all 0.2s ease;
       background: #fff;
-      font-size: 0.95rem;
       font-weight: 900;
+      font-size: 0.88rem;
       color: transparent;
+      transition: all 0.2s ease;
     }
 
-    .task-item.checked .task-checkbox {
-      background: var(--wc-sage);
-      border-color: var(--wc-sage);
+    .task-card.completed .task-checkbox-box {
+      background: var(--c-sage);
+      border-color: var(--c-sage);
       color: #fff;
     }
 
-    .task-content {
+    .task-body {
       flex: 1;
     }
 
-    .task-header-row {
+    .task-meta {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.35rem;
+      align-items: center;
+      margin-bottom: 0.3rem;
     }
 
-    .task-badge {
+    .task-id-badge {
       font-size: 0.76rem;
       font-weight: 800;
-      padding: 0.15rem 0.55rem;
-      border-radius: 6px;
-      background: var(--wc-gold-wash);
-      color: #8f6706;
-      text-transform: uppercase;
-      font-family: 'Quicksand', sans-serif;
+      color: var(--c-ocean);
+      background: var(--c-ocean-wash);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-family: 'Fira Code', monospace;
     }
 
     .task-title {
       font-weight: 800;
       font-size: 1.05rem;
-      color: var(--ink-dark);
+      color: var(--text-main);
       line-height: 1.4;
     }
 
     .task-desc {
       font-size: 0.9rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       line-height: 1.55;
       margin-top: 0.3rem;
     }
 
-    .task-code-badge {
-      display: inline-block;
+    code {
       font-family: 'Fira Code', monospace;
-      font-size: 0.8rem;
+      font-size: 0.85em;
       background: rgba(0, 0, 0, 0.05);
-      padding: 0.1rem 0.4rem;
+      padding: 0.1rem 0.35rem;
       border-radius: 4px;
-      color: var(--wc-ocean-deep);
-      margin-top: 0.3rem;
+      color: var(--c-ocean-deep);
     }
 
-    /* 思考工具箱：CER 與 DEAR 與 CLIL (Scientific Toolbox) */
-    .toolbox-tabs {
+    /* 思考工具箱 (Toolbox) */
+    .tabs-nav {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.8rem;
-      margin-bottom: 2.2rem;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
     }
 
-    .tab-btn {
-      background: var(--card-bg);
-      border: 2px solid var(--wc-ochre);
-      padding: 0.65rem 1.6rem;
+    .tab-trigger {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      padding: 0.65rem 1.5rem;
       font-weight: 700;
-      font-size: 1.02rem;
-      border-radius: 50px;
+      font-size: 1rem;
+      border-radius: 30px;
       cursor: pointer;
-      color: var(--ink-dark);
+      color: var(--text-muted);
       transition: all 0.25s ease;
       font-family: inherit;
     }
 
-    .tab-btn:hover {
-      background: var(--wc-gold-wash);
-      transform: translateY(-2px);
+    .tab-trigger:hover {
+      border-color: var(--c-ocean);
+      color: var(--c-ocean);
     }
 
-    .tab-btn.active {
-      background: var(--wc-terracotta);
+    .tab-trigger.active {
+      background: var(--c-ocean-deep);
       color: #fff;
-      border-color: var(--wc-terracotta);
-      box-shadow: var(--shadow-brush);
+      border-color: var(--c-ocean-deep);
+      box-shadow: 0 4px 14px rgba(30, 58, 138, 0.25);
     }
 
-    .tab-content {
+    .tab-pane {
       display: none;
     }
 
-    .tab-content.active {
+    .tab-pane.active {
       display: block;
-      animation: fadeIn 0.35s ease;
+      animation: tabFadeIn 0.3s ease;
     }
 
-    .cer-grid {
+    @keyframes tabFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cer-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
     }
 
     .cer-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 1.8rem;
-      border-left: 6px solid var(--wc-ocean);
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
       box-shadow: var(--shadow-sm);
+      border-left: 6px solid var(--c-ocean);
     }
 
     .cer-card:nth-child(2) {
-      border-left-color: var(--wc-gold);
-    }
-    .cer-card:nth-child(3) {
-      border-left-color: var(--wc-coral);
+      border-left-color: var(--c-amber);
     }
 
-    .cer-letter {
+    .cer-card:nth-child(3) {
+      border-left-color: var(--c-coral);
+    }
+
+    .cer-title-letter {
       font-size: 1.8rem;
       font-weight: 900;
-      color: var(--wc-ocean-deep);
-      font-family: 'Quicksand', sans-serif;
+      color: var(--c-ocean-deep);
       margin-bottom: 0.3rem;
     }
 
-    .cer-card:nth-child(2) .cer-letter { color: #b78a1a; }
-    .cer-card:nth-child(3) .cer-letter { color: var(--wc-terracotta); }
+    .cer-card:nth-child(2) .cer-title-letter {
+      color: var(--c-ochre);
+    }
 
-    .cer-role {
+    .cer-card:nth-child(3) .cer-title-letter {
+      color: var(--c-terracotta);
+    }
+
+    .cer-card-title {
       font-size: 1.15rem;
       font-weight: 800;
       margin-bottom: 0.6rem;
-      color: var(--ink-dark);
+      color: var(--text-main);
     }
 
     .cer-prompt {
       font-size: 0.92rem;
-      color: var(--wc-ocean-deep);
+      color: var(--c-ocean);
       font-style: italic;
-      background: rgba(0, 0, 0, 0.03);
-      padding: 0.5rem 0.8rem;
-      border-radius: 8px;
-      margin-bottom: 0.8rem;
-    }
-
-    /* 句型小抄與一鍵複製 */
-    .sentence-box {
-      background: #ffffff;
-      border: 2px solid var(--wc-ochre);
-      border-radius: var(--radius-soft);
-      padding: 2rem;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .sentence-box-intro {
-      margin-bottom: 1.5rem;
-      font-size: 0.98rem;
-      color: var(--ink-soft);
-      padding-bottom: 1rem;
-      border-bottom: 1px dashed rgba(201, 147, 85, 0.4);
-    }
-
-    .sentence-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 1.1rem;
-      border-bottom: 1px dashed rgba(201, 147, 85, 0.35);
-      gap: 1.2rem;
-      transition: background 0.2s ease;
-    }
-
-    .sentence-item:last-child {
-      border-bottom: none;
-    }
-
-    .sentence-item:hover {
-      background: var(--wc-gold-wash);
-      border-radius: 12px;
-    }
-
-    .sentence-num-badge {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 800;
-      font-size: 0.85rem;
-      color: var(--wc-terracotta);
-      background: var(--wc-coral-wash);
-      padding: 0.15rem 0.5rem;
+      background: var(--c-ocean-wash);
+      padding: 0.4rem 0.8rem;
       border-radius: 6px;
-      margin-bottom: 0.25rem;
-      display: inline-block;
+      margin-bottom: 0.85rem;
     }
 
-    .sentence-text {
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      color: var(--wc-ocean-deep);
-      font-size: 1.05rem;
-      letter-spacing: 0.2px;
-    }
-
-    .sentence-zh {
-      font-size: 0.92rem;
-      color: var(--ink-faint);
-      margin-top: 0.25rem;
-      font-family: 'Noto Serif TC', serif;
-    }
-
-    .btn-copy {
-      background: var(--wc-ocean-light);
-      border: none;
-      color: var(--wc-ocean-deep);
-      padding: 0.45rem 1rem;
-      border-radius: 10px;
-      font-weight: 700;
-      font-size: 0.88rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      white-space: nowrap;
-      font-family: inherit;
-      box-shadow: 0 2px 6px rgba(42, 111, 151, 0.15);
-    }
-
-    .btn-copy:hover {
-      background: var(--wc-ocean);
-      color: #fff;
-      transform: translateY(-2px);
-    }
-
-    /* AI 批判素養與 Log 規範說明卡 */
-    .ai-guideline-card {
-      background: #ffffff;
-      border: 2px solid var(--wc-purple);
-      border-radius: var(--radius-soft);
+    /* 句型小抄盒 */
+    .sentence-bank-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
       padding: 2.2rem;
       box-shadow: var(--shadow-sm);
     }
 
-    .ai-quote-box {
-      background: var(--wc-purple-wash);
-      border-left: 5px solid var(--wc-purple);
-      padding: 1.2rem 1.6rem;
-      border-radius: 12px;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--wc-purple);
-      margin-bottom: 1.8rem;
-    }
-
-    .ai-log-step-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    .sentence-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.1rem;
+      border-bottom: 1px dashed var(--border-soft);
       gap: 1.2rem;
-      margin-top: 1.2rem;
+      transition: background 0.2s ease;
     }
 
-    .ai-log-step {
-      background: var(--paper-bg);
-      border: 1.5px dashed rgba(123, 44, 191, 0.35);
-      border-radius: 14px;
-      padding: 1.2rem;
+    .sentence-row:last-child {
+      border-bottom: none;
     }
 
-    .ai-log-step h4 {
-      font-size: 1rem;
+    .sentence-row:hover {
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+
+    .sentence-seq {
+      display: inline-block;
+      font-size: 0.82rem;
       font-weight: 800;
-      color: var(--ink-dark);
-      margin-bottom: 0.4rem;
+      color: var(--c-terracotta);
+      background: var(--c-coral-wash);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      margin-bottom: 0.25rem;
     }
 
-    .ai-log-step p {
+    .sentence-en {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--c-ocean-deep);
+    }
+
+    .sentence-zh {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      margin-top: 0.2rem;
+    }
+
+    .btn-copy {
+      background: var(--c-ocean-wash);
+      border: 1px solid #bfdbfe;
+      color: var(--c-ocean-deep);
+      padding: 0.45rem 1rem;
+      border-radius: 8px;
+      font-weight: 700;
       font-size: 0.88rem;
-      color: var(--ink-soft);
-      line-height: 1.55;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
     }
 
-    /* 📂 專案檔案清單與教材下載區 (Repository Contents) */
+    .btn-copy:hover {
+      background: var(--c-ocean-deep);
+      color: #fff;
+    }
+
+    /* 📂 專案檔案清單 */
     .resource-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
-    .resource-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 20px;
+    .resource-box {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
       padding: 1.8rem;
-      box-shadow: var(--shadow-sm);
       display: flex;
       flex-direction: column;
-      transition: all 0.3s ease;
-      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.25s ease;
     }
 
-    .resource-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-md);
-      border-color: var(--wc-ocean);
-      background: #ffffff;
+    .resource-box:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--c-ocean);
     }
 
-    .resource-icon-wrap {
-      font-size: 2.4rem;
-      margin-bottom: 1rem;
+    .resource-icon {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
     }
 
-    .resource-tag {
+    .resource-badge {
       font-size: 0.78rem;
       font-weight: 800;
-      padding: 0.2rem 0.65rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 6px;
       display: inline-block;
       margin-bottom: 0.6rem;
-      font-family: 'Quicksand', sans-serif;
+      background: var(--c-ocean-wash);
+      color: var(--c-ocean-deep);
     }
 
-    .resource-tag.ppt { background: var(--wc-coral-wash); color: var(--wc-terracotta); }
-    .resource-tag.script { background: var(--wc-ocean-wash); color: var(--wc-ocean-deep); }
-    .resource-tag.guide { background: var(--wc-sage-wash); color: var(--wc-sage); }
-    .resource-tag.clil { background: var(--wc-gold-wash); color: #8e6205; }
-
     .resource-title {
-      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--ink-dark);
+      font-size: 1.15rem;
+      color: var(--text-main);
       margin-bottom: 0.5rem;
       line-height: 1.4;
     }
 
     .resource-desc {
-      font-size: 0.9rem;
-      color: var(--ink-soft);
+      font-size: 0.92rem;
+      color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 1.2rem;
     }
 
-    .resource-footer {
+    .resource-action {
       margin-top: auto;
       padding-top: 1rem;
-      border-top: 1px dashed rgba(201, 147, 85, 0.35);
+      border-top: 1px dashed var(--border-soft);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .resource-target {
-      font-size: 0.8rem;
-      color: var(--ink-faint);
-    }
-
-    .btn-resource-view {
+    .btn-view-doc {
+      color: var(--c-ocean);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.92rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--wc-ocean);
-      color: #fff;
-      text-decoration: none;
-      padding: 0.4rem 0.95rem;
-      border-radius: 12px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      transition: all 0.2s ease;
+      gap: 0.3rem;
     }
 
-    .btn-resource-view:hover {
-      background: var(--wc-ocean-deep);
-      transform: translateY(-2px);
+    .btn-view-doc:hover {
+      text-decoration: underline;
     }
 
-    /* Marp 預覽指引卡片 */
-    .marp-instruction-card {
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(245, 239, 227, 0.9));
-      border: 2px dashed var(--wc-ochre);
-      border-radius: 18px;
-      padding: 1.8rem 2.2rem;
-      display: flex;
-      align-items: center;
-      gap: 1.8rem;
-      flex-wrap: wrap;
-    }
-
-    .marp-icon {
-      font-size: 3rem;
-      flex-shrink: 0;
-    }
-
-    .marp-text {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .marp-text h4 {
-      font-size: 1.18rem;
-      font-weight: 800;
-      color: var(--ink-dark);
-      margin-bottom: 0.4rem;
-    }
-
-    .marp-text p {
-      font-size: 0.92rem;
-      color: var(--ink-soft);
-      line-height: 1.6;
-    }
-
-    /* 18 週學習地圖：手帳時間軸 */
-    .timeline-filter-bar {
+    /* 18 週學習地圖 */
+    .filter-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.6rem;
-      margin-bottom: 2.8rem;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
     }
 
-    .filter-chip {
-      background: var(--card-bg);
-      border: 1.5px solid rgba(201, 147, 85, 0.4);
-      padding: 0.45rem 1.2rem;
+    .filter-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-soft);
+      padding: 0.45rem 1.15rem;
       border-radius: 20px;
       font-size: 0.92rem;
       font-weight: 600;
       cursor: pointer;
+      color: var(--text-muted);
       transition: all 0.2s ease;
-      color: var(--ink-soft);
       font-family: inherit;
     }
 
-    .filter-chip.active, .filter-chip:hover {
-      background: var(--wc-ocean-deep);
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--c-ocean-deep);
       color: #fff;
-      border-color: var(--wc-ocean-deep);
+      border-color: var(--c-ocean-deep);
     }
 
     .timeline-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem;
     }
 
     .week-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 18px;
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-md);
       padding: 1.5rem;
-      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
-      position: relative;
+      transition: all 0.25s ease;
     }
 
     .week-card:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       box-shadow: var(--shadow-md);
-      border-color: var(--wc-coral);
+      border-color: var(--c-coral);
     }
 
     .week-card.highlight {
-      border: 2px solid var(--wc-coral);
-      background: linear-gradient(145deg, #ffffff, rgba(224, 122, 95, 0.09));
+      border-color: var(--c-coral);
+      background: #fffdfb;
     }
 
-    .week-badge {
-      display: inline-block;
+    .week-tag {
       font-size: 0.8rem;
       font-weight: 800;
-      text-transform: uppercase;
-      color: var(--wc-terracotta);
-      margin-bottom: 0.4rem;
-      font-family: 'Quicksand', sans-serif;
+      color: var(--c-terracotta);
+      margin-bottom: 0.35rem;
+      font-family: 'Fira Code', monospace;
     }
 
-    .week-title {
+    .week-name {
       font-size: 1.15rem;
       font-weight: 800;
-      color: var(--ink-dark);
+      color: var(--text-main);
       margin-bottom: 0.5rem;
       line-height: 1.4;
     }
 
-    .week-task {
+    .week-desc {
       font-size: 0.9rem;
-      color: var(--ink-soft);
+      color: var(--text-muted);
       line-height: 1.6;
       margin-top: auto;
       padding-top: 0.6rem;
-      border-top: 1px dashed rgba(201, 147, 85, 0.3);
+      border-top: 1px dashed var(--border-soft);
     }
 
-    /* 評分標準小卡 (Grading Policy) */
+    /* 評分與警示 */
     .grading-alert {
-      background: var(--wc-coral-wash);
-      border-left: 5px solid var(--wc-coral);
-      padding: 1.1rem 1.6rem;
-      border-radius: 12px;
+      background: #fff7ed;
+      border-left: 5px solid var(--c-coral);
+      padding: 1.2rem 1.6rem;
+      border-radius: var(--radius-md);
       font-size: 0.98rem;
-      color: var(--ink-dark);
+      color: var(--text-main);
       margin-top: 2rem;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     /* FAQ 手風琴 */
-    .faq-grid {
+    .faq-list {
+      max-width: 860px;
+      margin: 0 auto;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
-      max-width: 880px;
-      margin: 0 auto;
+      gap: 1rem;
     }
 
-    .faq-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 16px;
+    .faq-item {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-md);
       overflow: hidden;
-      transition: all 0.25s ease;
     }
 
     .faq-question {
-      padding: 1.3rem 1.8rem;
+      padding: 1.25rem 1.6rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       cursor: pointer;
       font-weight: 700;
-      font-size: 1.08rem;
-      color: var(--ink-dark);
+      font-size: 1.05rem;
       user-select: none;
     }
 
     .faq-question:hover {
-      background: var(--wc-gold-wash);
+      background: #f8fafc;
     }
 
-    .faq-arrow {
+    .faq-icon {
       font-size: 1.1rem;
-      color: var(--wc-ochre);
-      transition: transform 0.3s ease;
+      color: var(--c-ocean);
+      transition: transform 0.25s ease;
     }
 
     .faq-answer {
-      padding: 0 1.8rem;
+      padding: 0 1.6rem;
       max-height: 0;
       overflow: hidden;
-      transition: all 0.35s ease;
+      transition: all 0.3s ease;
       font-size: 0.98rem;
-      color: var(--ink-soft);
-      line-height: 1.75;
+      color: var(--text-muted);
+      line-height: 1.7;
     }
 
-    .faq-card.open {
-      border-color: var(--wc-coral);
-      box-shadow: var(--shadow-sm);
+    .faq-item.active {
+      border-color: var(--c-ocean);
     }
 
-    .faq-card.open .faq-arrow {
+    .faq-item.active .faq-icon {
       transform: rotate(180deg);
-      color: var(--wc-coral);
     }
 
-    .faq-card.open .faq-answer {
-      padding: 0 1.8rem 1.4rem;
-      max-height: 400px;
+    .faq-item.active .faq-answer {
+      padding: 0 1.6rem 1.4rem;
+      max-height: 380px;
     }
 
-    /* 頁尾 Footer */
+    /* Footer */
     footer {
       background: #f1ebd9;
-      border-top: 2px dashed rgba(201, 147, 85, 0.5);
+      border-top: 1.5px solid var(--border-warm);
       padding: 4rem 0 2.5rem;
-      margin-top: 5rem;
       text-align: center;
-      position: relative;
+      margin-top: 5rem;
     }
 
-    .footer-stamp {
+    .footer-badge {
       display: inline-block;
-      border: 2px dashed var(--wc-terracotta);
-      color: var(--wc-terracotta);
-      padding: 0.5rem 1.5rem;
-      border-radius: 12px;
+      border: 1.5px dashed var(--c-terracotta);
+      color: var(--c-terracotta);
+      padding: 0.4rem 1.4rem;
+      border-radius: 20px;
       font-weight: 700;
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      transform: rotate(-2deg);
+      font-size: 0.92rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-title {
+      font-family: 'Noto Serif TC', serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
     }
 
     .footer-text {
-      color: var(--ink-soft);
-      font-size: 0.98rem;
-      margin-bottom: 0.8rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
     }
 
     .footer-links {
@@ -1410,47 +1219,37 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1.2rem;
-      margin-top: 1.4rem;
+      margin-top: 1rem;
     }
 
     .footer-links a {
-      color: var(--wc-ocean-deep);
+      color: var(--c-ocean-deep);
       text-decoration: none;
       font-weight: 600;
       font-size: 0.92rem;
     }
+
     .footer-links a:hover {
       text-decoration: underline;
     }
 
-    .license-note {
-      max-width: 680px;
-      margin: 1.8rem auto 0;
-      font-size: 0.82rem;
-      color: var(--ink-faint);
-      line-height: 1.6;
-    }
-
-    /* Toast 通知 */
+    /* Toast 提示 */
     #toast {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: var(--ink-dark);
+      background: var(--text-main);
       color: #fff;
-      padding: 0.9rem 1.5rem;
+      padding: 0.85rem 1.4rem;
       border-radius: 30px;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       font-weight: 600;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      box-shadow: var(--shadow-lg);
       transform: translateY(120px);
       opacity: 0;
-      transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s ease;
       z-index: 10000;
       pointer-events: none;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
     }
 
     #toast.show {
@@ -1458,236 +1257,231 @@
       opacity: 1;
     }
 
-    /* 回到頂端浮動按鈕 */
-    .btn-back-to-top {
+    /* 回到頂端按鈕 */
+    .btn-scroll-top {
       position: fixed;
       bottom: 30px;
       left: 30px;
-      width: 46px;
-      height: 46px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: var(--card-bg);
-      border: 2px solid var(--wc-ochre);
-      color: var(--ink-dark);
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       cursor: pointer;
-      box-shadow: var(--shadow-brush);
+      box-shadow: var(--shadow-md);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.3s ease;
-      z-index: 998;
+      transition: all 0.25s ease;
+      z-index: 999;
     }
 
-    .btn-back-to-top.show {
+    .btn-scroll-top.show {
       opacity: 1;
       visibility: visible;
     }
 
-    .btn-back-to-top:hover {
-      background: var(--wc-ocean-deep);
+    .btn-scroll-top:hover {
+      background: var(--c-ocean-deep);
       color: #fff;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
-    /* 動畫 Keyframes */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(4deg); }
-    }
-
-    @keyframes pulseBlob {
-      0% { transform: translate(-50%, -50%) scale(0.92) rotate(0deg); }
-      100% { transform: translate(-50%, -50%) scale(1.08) rotate(12deg); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* RWD 調整 */
-    @media (max-width: 900px) {
+    /* RWD 響應式 */
+    @media (max-width: 860px) {
       .nav-links {
         display: none;
         position: absolute;
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(251, 248, 242, 0.98);
+        background: #fff;
         flex-direction: column;
         padding: 1.5rem 2rem;
-        border-bottom: 2px solid var(--wc-ochre);
+        border-bottom: 2px solid var(--border-soft);
         box-shadow: var(--shadow-md);
-        gap: 0.9rem;
+        gap: 0.8rem;
       }
+
       .nav-links.open {
         display: flex;
       }
+
       .mobile-menu-btn {
         display: block;
       }
-      .hero { padding: 3.5rem 0 2.2rem; }
-      .hero-quote-card { padding: 1.5rem 1.6rem; }
-      .task-section-box { padding: 1.6rem; }
-      .sentence-item { flex-direction: column; align-items: flex-start; }
-      .btn-copy { align-self: flex-end; }
+
+      .hero {
+        padding: 3rem 0 2rem;
+      }
+
+      .philosophy-card {
+        padding: 1.6rem 1.5rem;
+      }
+
+      .tasks-box {
+        padding: 1.5rem;
+      }
+
+      .sentence-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn-copy {
+        align-self: flex-end;
+      }
     }
   </style>
 </head>
-<body>
 
-  <!-- 模擬水彩畫紙紋理層 -->
-  <div class="paper-texture-overlay"></div>
+<body>
 
   <!-- 頂部導航列 -->
   <nav>
     <a href="#" class="nav-brand">
-      <span class="icon-globe">🌍</span>
+      <span class="nav-brand-icon">🌍</span>
       <span>地球物理通論</span>
     </a>
 
-    <button class="mobile-menu-btn" onclick="toggleMobileNav()" aria-label="切換選單">☰</button>
+    <button class="mobile-menu-btn" onclick="toggleNav()" aria-label="選單">☰</button>
 
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#philosophy" onclick="closeMobileNav()">理念與特色</a></li>
-      <li><a href="#clil-4c" onclick="closeMobileNav()">4C 雙語架構</a></li>
-      <li><a href="#workflow" onclick="closeMobileNav()">上課模式</a></li>
-      <li><a href="#tasks" onclick="closeMobileNav()">第 1 週 8 大任務</a></li>
-      <li><a href="#toolbox" onclick="closeMobileNav()">思考工具箱</a></li>
-      <li><a href="#resources" onclick="closeMobileNav()">教材檔案庫</a></li>
-      <li><a href="#roadmap" onclick="closeMobileNav()">18 週地圖</a></li>
-      <li><a href="#grading" onclick="closeMobileNav()">評量方式</a></li>
-      <li><a href="#faq" onclick="closeMobileNav()">新手問答</a></li>
-      <li><a href="#tasks" class="btn-nav-action" onclick="closeMobileNav()">🚀 任務通關</a></li>
+    <ul class="nav-links" id="nav-menu">
+      <li><a href="#philosophy" onclick="closeNav()">核心理念</a></li>
+      <li><a href="#clil-4c" onclick="closeNav()">4C 雙語</a></li>
+      <li><a href="#workflow" onclick="closeNav()">上課模式</a></li>
+      <li><a href="#tasks" onclick="closeNav()">第 1 週 8 大任務</a></li>
+      <li><a href="#toolbox" onclick="closeNav()">思考工具箱</a></li>
+      <li><a href="#resources" onclick="closeNav()">教材庫</a></li>
+      <li><a href="#roadmap" onclick="closeNav()">18 週地圖</a></li>
+      <li><a href="#grading" onclick="closeNav()">評量方式</a></li>
+      <li><a href="#faq" onclick="closeNav()">常見問題</a></li>
+      <li><a href="#tasks" class="btn-nav-action" onclick="closeNav()">🚀 任務檢核</a></li>
     </ul>
   </nav>
 
   <!-- Hero 主視覺區塊 -->
   <header class="hero">
-    <div class="hero-watercolor-blob"></div>
     <div class="container">
-
-      <!-- README Badges 轉化為精緻徽章標籤 -->
-      <div class="badge-group">
-        <span class="badge-pill primary">🍂 115-1 (2026 Fall)</span>
-        <span class="badge-pill coral">🏛️ 臺北市立大學 地生系二年級</span>
-        <span class="badge-pill sage">🧩 CLIL · CER · DEAR 雙語探究</span>
-        <span class="badge-pill gold">💻 Python · PyGMT · Colab · GitHub</span>
+      <div class="badge-bar">
+        <span class="pill-badge primary">🍂 115-1 (2026 Fall)</span>
+        <span class="pill-badge coral">🏛️ 臺北市立大學 地生系二年級</span>
+        <span class="pill-badge sage">🧩 CLIL · CER · DEAR 雙語探究</span>
+        <span class="pill-badge amber">💻 Python · PyGMT · Colab · GitHub</span>
       </div>
 
       <h1>地球物理通論：探索未知的地底冒險</h1>
       <p class="hero-subtitle">General Geophysics: Course Orientation, AI-assisted Inquiry, and Digital Workflow</p>
 
-      <!-- README 核心哲學引言 -->
-      <div class="hero-quote-card">
-        <p class="hero-quote-main">「我們用地球物理來學習地球，用英文來接觸科學，用 AI 來協助探索，但最後用自己的思考來理解世界。」</p>
-        <p class="hero-quote-en">“We use geophysics to study the Earth, English to access science, AI to support exploration, and our own thinking to understand the world.”</p>
-        <div class="hero-teacher-tag">👨‍🏫 授課教師：陳達毅 老師 (Dr. Dayi Chen)</div>
+      <!-- 核心哲學名言框 -->
+      <div class="philosophy-card" id="philosophy">
+        <p class="philosophy-zh">「我們用地球物理來學習地球，用英文來接觸科學，用 AI 來協助探索，但最後用自己的思考來理解世界。」</p>
+        <p class="philosophy-en">“We use geophysics to study the Earth, English to access science, AI to support
+          exploration, and our own thinking to understand the world.”</p>
+        <div class="instructor-tag">👨‍🏫 授課教師：陳達毅 博士 / 助理教授 (Dr. Dayi Chen)</div>
       </div>
 
       <div class="hero-actions">
-        <a href="#tasks" class="btn-brush btn-primary">🚀 啟動第 1 週 8 大通關任務</a>
-        <a href="#resources" class="btn-brush btn-secondary">📂 查看專案檔案與講稿</a>
-        <a href="#toolbox" class="btn-brush btn-tertiary">🧠 開啟科學家思考工具箱</a>
+        <a href="#tasks" class="btn btn-main">🚀 啟動第 1 週 8 大通關任務</a>
+        <a href="#resources" class="btn btn-outline">📂 查閱課程教材講稿</a>
+        <a href="#toolbox" class="btn btn-outline">🧠 科學家思考工具箱</a>
       </div>
     </div>
   </header>
 
-  <!-- 課程三大修課超能力 (Three Pillars) -->
-  <section id="philosophy">
+  <!-- 課程三大亮點 -->
+  <section>
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Core Highlights</span>
+        <span class="section-tag">Core Highlights</span>
         <h2 class="section-title">這不是只背名詞的課，而是一場科學探究</h2>
-        <p class="section-desc">如果我們不知道板塊構造理論，只拿到地形、地震、重力與磁力數據，我們能自己推論出地球內部正在發生什麼事嗎？</p>
+        <p class="section-desc">若我們不知道板塊構造理論，只拿到地形、地震、重力與磁力數據，我們能自己推論出地球內部正在發生什麼事嗎？</p>
       </div>
 
-      <div class="pillar-grid">
-        <!-- 卡片 1: Content -->
-        <div class="pillar-card ocean">
-          <div class="pillar-icon">🌋</div>
-          <h3 class="pillar-title">能看懂地球訊號的人</h3>
-          <div class="pillar-en">Understand Earth via Geophysical Data</div>
-          <p class="pillar-desc">
-            就像醫生用 X 光與超音波看診，地球物理學家用地震波、重力場、地磁與地熱流來「透視」看不見的地球內部構造、震源深度與斷層破裂。
+      <div class="card-grid-3">
+        <!-- 亮點 1 -->
+        <div class="feature-card">
+          <div class="feature-icon">🌋</div>
+          <h3 class="feature-title">能看懂地球訊號的人</h3>
+          <div class="feature-en">Understand Earth via Geophysical Data</div>
+          <p class="feature-desc">
+            就像醫生用 X 光與超音波看診，地球物理學家用地震波、重力場、地磁與地熱流來「透視」看不見的地底構造、斷層破裂與岩漿活動。
           </p>
-          <div class="pillar-tags">
-            <span class="tag-item">#折射震測</span>
-            <span class="tag-item">#重力異常與Geoid</span>
-            <span class="tag-item">#海底地磁條帶</span>
-            <span class="tag-item">#板塊隱沒帶</span>
+          <div class="badge-list">
+            <span class="tag-sm">#折射震測</span>
+            <span class="tag-sm">#重力異常與Geoid</span>
+            <span class="tag-sm">#地磁條帶</span>
+            <span class="tag-sm">#板塊隱沒帶</span>
           </div>
         </div>
 
-        <!-- 卡片 2: Technology & AI -->
-        <div class="pillar-card coral">
-          <div class="pillar-icon">🤖</div>
-          <h3 class="pillar-title">能駕馭現代工具的人</h3>
-          <div class="pillar-en">AI, Google Colab & PyGMT Workflow</div>
-          <p class="pillar-desc">
-            告別死板紙筆計算！我們在免安裝的 Google Colab 雲端跑 Python、用 PyGMT 繪製專業地球物理地圖，並讓 AI（Gemini/Codex）成為你專屬的探究思考夥伴。
+        <!-- 亮點 2 -->
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3 class="feature-title">能駕馭現代工具的人</h3>
+          <div class="feature-en">AI, Google Colab & PyGMT Workflow</div>
+          <p class="feature-desc">
+            告別死記紙筆！我們在 Google Colab 雲端跑 Python、用 PyGMT 繪製專業地球物理地圖，並讓 AI（Gemini/Codex）成為你專屬的探究思考夥伴。
           </p>
-          <div class="pillar-tags">
-            <span class="tag-item">#GoogleColab</span>
-            <span class="tag-item">#PyGMT繪圖</span>
-            <span class="tag-item">#AI批判式協作</span>
-            <span class="tag-item">#3D地形重力列印</span>
+          <div class="badge-list">
+            <span class="tag-sm">#GoogleColab</span>
+            <span class="tag-sm">#PyGMT地圖</span>
+            <span class="tag-sm">#AI批判協作</span>
+            <span class="tag-sm">#3D地質列印</span>
           </div>
         </div>
 
-        <!-- 卡片 3: Communication & Cognition -->
-        <div class="pillar-card sage">
-          <div class="pillar-icon">🗣️</div>
-          <h3 class="pillar-title">能清楚表達思考的人</h3>
-          <div class="pillar-en">CLIL Bilingual & CER Argumentation</div>
-          <p class="pillar-desc">
-            不考英文文法，而是學會使用科學英語提出 Claim（主張）、尋找 Evidence（證據）、建構 Reasoning（推理），並最終公開部署於 GitHub Pages！
+        <!-- 亮點 3 -->
+        <div class="feature-card">
+          <div class="feature-icon">🗣️</div>
+          <h3 class="feature-title">能清楚表達思考的人</h3>
+          <div class="feature-en">CLIL Bilingual & CER Argumentation</div>
+          <p class="feature-desc">
+            不是英文文法課，而是學會使用科學英文提出 Claim（主張）、尋找 Evidence（證據）、建構 Reasoning（推理），並公開展示於 GitHub Pages！
           </p>
-          <div class="pillar-tags">
-            <span class="tag-item">#CLIL雙語整合</span>
-            <span class="tag-item">#CER論證模型</span>
-            <span class="tag-item">#DEAR建模循環</span>
-            <span class="tag-item">#GitHubPages專題</span>
+          <div class="badge-list">
+            <span class="tag-sm">#CLIL雙語</span>
+            <span class="tag-sm">#CER科學論證</span>
+            <span class="tag-sm">#DEAR建模</span>
+            <span class="tag-sm">#GitHubPages專題</span>
           </div>
         </div>
       </div>
 
-      <!-- CLIL 4C 整合架構方塊 (Detailed from README) -->
-      <div class="four-c-box" id="clil-4c">
-        <div class="four-c-header">
+      <!-- CLIL 4C 整合架構 -->
+      <div class="four-c-wrapper" id="clil-4c">
+        <div class="four-c-intro">
           <div>
             <h3>🧩 CLIL 雙語整合學習架構 (4C Framework)</h3>
-            <p>雙語教學（CLIL / EMI）的核心不是為了學文法，而是將語言作為認知探索與科學溝通的強大工具：</p>
+            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.2rem;">雙語教學（CLIL /
+              EMI）的核心是將英語作為獲取新知、描述現象與學術溝通的強大工具：</p>
           </div>
-          <span class="badge-pill sage">Content · Communication · Cognition · Culture</span>
+          <span class="pill-badge sage">Content · Communication · Cognition · Culture</span>
         </div>
 
         <div class="four-c-grid">
           <div class="four-c-card">
-            <span class="four-c-badge">Content 內容</span>
-            <h4 class="four-c-title">地球物理學科知識</h4>
-            <p class="four-c-desc">震測走時公式、地下密度重力異常、海底擴張地磁倒轉、地熱流分佈與全球板塊構造動力學。</p>
+            <span class="c-badge c1">Content 內容</span>
+            <h4 class="c-title">地球物理學科知識</h4>
+            <p class="c-desc">震測走時公式、地下密度重力異常、海底擴張地磁倒轉、地溫熱流與板塊構造動力學。</p>
           </div>
-
           <div class="four-c-card">
-            <span class="four-c-badge">Communication 溝通</span>
-            <h4 class="four-c-title">科學語言與表達</h4>
-            <p class="four-c-desc">精熟地科專有名詞、掌握「科學論述六句組」、中英對照口頭答辯、撰寫結構化探究報告。</p>
+            <span class="c-badge c2">Communication 溝通</span>
+            <h4 class="c-title">科學語言與表達</h4>
+            <p class="c-desc">精熟地科專有名詞、掌握「科學論述六句組」、雙語口頭簡報與中英文對照專題報告。</p>
           </div>
-
           <div class="four-c-card">
-            <span class="four-c-badge">Cognition 認知</span>
-            <h4 class="four-c-title">批判性思維歷程</h4>
-            <p class="four-c-desc">從資料觀察到假說預測，主動查證與質疑 AI 輸出，在發現反例時修正模型（DEAR 循環）。</p>
+            <span class="c-badge c3">Cognition 認知</span>
+            <h4 class="c-title">批判性思維歷程</h4>
+            <p class="c-desc">從資料觀察到假說預測，主動查證與質疑 AI 輸出，在發現反例時修正模型（DEAR 循環）。</p>
           </div>
-
           <div class="four-c-card">
-            <span class="four-c-badge">Culture 文化</span>
-            <h4 class="four-c-title">開放科學與協作</h4>
-            <p class="four-c-desc">擁抱開放資料（Open Data）、實踐可重現性研究（Reproducibility），在 GitHub 上開源分享與協作。</p>
+            <span class="c-badge c4">Culture 文化</span>
+            <h4 class="c-title">開放科學與協作</h4>
+            <p class="c-desc">擁抱開放資料（Open Data）、實踐可重現性研究（Reproducibility），在 GitHub 開源協作。</p>
           </div>
         </div>
       </div>
@@ -1695,158 +1489,154 @@
     </div>
   </section>
 
-  <!-- 上課方式介紹 (How Class Works) -->
-  <section id="workflow" style="background: rgba(245, 239, 227, 0.55);">
+  <!-- 上課方式介紹 -->
+  <section id="workflow" style="background: rgba(255, 255, 255, 0.6);">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Classroom Workflow</span>
+        <span class="section-tag">Classroom Workflow</span>
         <h2 class="section-title">任務導向的三階段學習模式</h2>
         <p class="section-desc">每一堂課皆以真實問題為核心，老師全程示範並錄影，同學分組協作，最後發表你的探究成果。</p>
       </div>
 
-      <div class="workflow-container">
-        <!-- 階段 1 -->
-        <div class="step-card">
-          <div class="step-number">1</div>
-          <h3 class="step-title">老師完整示範</h3>
-          <div class="step-subtitle">Demonstration & Guidance</div>
-          <ul class="step-list">
+      <div class="workflow-grid">
+        <div class="workflow-card">
+          <div class="step-badge">1</div>
+          <h3 class="workflow-title">老師完整示範</h3>
+          <div class="workflow-subtitle">Demonstration & Guidance</div>
+          <ul class="workflow-list">
             <li>示範如何向 AI 提出高品質導引式探究提問</li>
-            <li>示範 Google Colab 程式撰寫與 PyGMT 地球物理地圖繪製</li>
-            <li>示範如何批判性檢驗 AI 的回覆與公式是否合乎物理原理</li>
+            <li>示範 Google Colab 程式撰寫與 PyGMT 地圖繪製</li>
+            <li>示範如何批判性檢驗 AI 的回覆與物理公式</li>
             <li>全程錄影存檔，課後隨時可複習操作細節</li>
           </ul>
         </div>
 
-        <!-- 階段 2 -->
-        <div class="step-card">
-          <div class="step-number">2</div>
-          <h3 class="step-title">小組動手實作</h3>
-          <div class="step-subtitle">Teamwork & AI Interaction</div>
-          <ul class="step-list">
-            <li>2–3 人一組，推選組長並分配角色（Data/Code、Explanation/CLIL、Design/Web）</li>
-            <li>每位組員實際執行程式，並記錄個人的提問與批判歷程</li>
-            <li>完整保存「AI Interaction Log」作為學習與評分依據</li>
+        <div class="workflow-card">
+          <div class="step-badge">2</div>
+          <h3 class="workflow-title">小組動手實作</h3>
+          <div class="workflow-subtitle">Teamwork & AI Interaction</div>
+          <ul class="workflow-list">
+            <li>2–3 人一組，推選組長分工（Data/Code, CLIL, Web）</li>
+            <li>每位組員實際執行程式，記錄個人的提問與批判歷程</li>
+            <li>完整保存「AI Interaction Log」作為學習成果依據</li>
             <li>遇到困難先問 AI、小組討論互助，再請教老師</li>
           </ul>
         </div>
 
-        <!-- 階段 3 -->
-        <div class="step-card">
-          <div class="step-number">3</div>
-          <h3 class="step-title">成果分享與答辯</h3>
-          <div class="step-subtitle">Presentation & Model Revision</div>
-          <ul class="step-list">
-            <li>用觀測資料、地形剖面與圖表向同儕說明小組模型</li>
+        <div class="workflow-card">
+          <div class="step-badge">3</div>
+          <h3 class="workflow-title">成果分享與答辯</h3>
+          <div class="workflow-subtitle">Presentation & Model Revision</div>
+          <ul class="workflow-list">
+            <li>用觀測資料、地形剖面與圖表向全班說明小組模型</li>
             <li>練習運用 CLIL 科學論述句型進行雙語簡報</li>
             <li>接受同儕與老師的提問，發現模型局限並迭代修正</li>
-            <li>累積每次作業成果，期末部署成 GitHub Pages 公開專案網站</li>
+            <li>累積每次作業成果，期末部署成 GitHub Pages 公開網站</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 🚀 第一堂課 8 大任務清單 (Week 1 Onboarding Tasks 1~8) -->
+  <!-- 🚀 第 1 週 8 大通關任務清單 -->
   <section id="tasks">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Week 1 Onboarding Tasks</span>
+        <span class="section-tag">Week 1 Onboarding Tasks</span>
         <h2 class="section-title">第一堂課 8 大通關任務清單</h2>
-        <p class="section-desc">下課前每位同學與小組需依序完成以下 8 項核心任務。點選勾選即可自動儲存進度！</p>
+        <p class="section-desc">下課前每位同學與小組需依序完成以下 8 項核心任務。點選方塊即可自動儲存進度！</p>
       </div>
 
-      <div class="task-section-box">
-        <!-- 任務進度條 -->
-        <div class="task-progress-wrap">
-          <div class="task-progress-label">
+      <div class="tasks-box">
+        <div class="progress-bar-card">
+          <div class="progress-label-row">
             <span>🎒 任務通關完成度</span>
-            <span id="task-progress-percent">0/8 (0%)</span>
+            <span id="task-percent-text">0/8 (0%)</span>
           </div>
-          <div class="progress-bar-track">
-            <div class="progress-bar-fill" id="task-progress-fill"></div>
+          <div class="progress-track">
+            <div class="progress-bar" id="task-progress-bar"></div>
           </div>
-          <div class="task-tools-bar">
-            <span>💡 提示：點擊任一任務卡片即可切換完成狀態（進度會自動儲存在本機）</span>
-            <button class="btn-reset-tasks" onclick="resetTasks()">↺ 重設進度</button>
+          <div class="tasks-tools">
+            <span>💡 提示：點擊任一任務卡片即可切換勾選狀態（自動記憶於本機瀏覽器）</span>
+            <button class="btn-reset" onclick="resetAllTasks()">↺ 重設勾選進度</button>
           </div>
         </div>
 
-        <!-- 8 大任務卡片列表 (Exact match from README) -->
-        <div class="task-grid" id="task-grid">
-
+        <div class="tasks-grid">
           <!-- 任務 1 -->
-          <div class="task-item" data-task-id="1" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 01</span>
-                <span class="task-code-badge">Team</span>
+          <div class="task-card" data-tid="1" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 01</span>
+                <code>Team</code>
               </div>
               <div class="task-title">1. 分組建立與角色分工</div>
-              <div class="task-desc">2–3 人一組，推選組長，分配初期責任角色：<code>Data/Code</code>、<code>Explanation/CLIL</code>、<code>Design/Web/3D</code>。</div>
+              <div class="task-desc">2–3
+                人一組，推選組長，分配責任角色：<code>Data/Code</code>、<code>Explanation/CLIL</code>、<code>Design/Web/3D</code>。</div>
             </div>
           </div>
 
           <!-- 任務 2 -->
-          <div class="task-item" data-task-id="2" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 02</span>
-                <span class="task-code-badge">GitHub</span>
+          <div class="task-card" data-tid="2" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 02</span>
+                <code>GitHub</code>
               </div>
               <div class="task-title">2. GitHub 設定與專案庫建立</div>
-              <div class="task-desc">註冊 GitHub 帳號，建立個人或小組儲存庫 <code>geophysics-learning-2026</code>，為日後作品集鋪路。</div>
+              <div class="task-desc">註冊 GitHub 帳號，建立個人或小組儲存庫 <code>geophysics-learning-2026</code>，為作品集鋪路。</div>
             </div>
           </div>
 
           <!-- 任務 3 -->
-          <div class="task-item" data-task-id="3" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 03</span>
-                <span class="task-code-badge">Colab</span>
+          <div class="task-card" data-tid="3" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 03</span>
+                <code>Colab</code>
               </div>
               <div class="task-title">3. Colab 啟動與程式測試</div>
-              <div class="task-desc">開啟 Google Colab，建立首個筆記本 <code>Week01_Geophysics_First_Inquiry.ipynb</code> 並成功執行 Python 測試碼。</div>
+              <div class="task-desc">開啟 Google Colab，建立首個筆記本 <code>Week01_Geophysics_First_Inquiry.ipynb</code> 並執行測試代碼。
+              </div>
             </div>
           </div>
 
           <!-- 任務 4 -->
-          <div class="task-item" data-task-id="4" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 04</span>
-                <span class="task-code-badge">AI Inquiry</span>
+          <div class="task-card" data-tid="4" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 04</span>
+                <code>AI Prompt</code>
               </div>
               <div class="task-title">4. AI 認識與導引式探究</div>
-              <div class="task-desc">在 Gemini / Codex 中進行第一階段「全球地震、火山與海溝分布」之引導式提問（切記：不直接索取標準答案）。</div>
+              <div class="task-desc">在 Gemini / Codex 中進行第一階段「全球地震、火山與海溝分布」引導式提問（切記：不直接要答案）。</div>
             </div>
           </div>
 
           <!-- 任務 5 -->
-          <div class="task-item" data-task-id="5" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 05</span>
-                <span class="task-code-badge">CER</span>
+          <div class="task-card" data-tid="5" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 05</span>
+                <code>CER</code>
               </div>
               <div class="task-title">5. CER 科學論證結構萃取</div>
-              <div class="task-desc">將 AI 與個人的分析討論整理為 Claim（主張）、Evidence（證據）、Reasoning（推理）結構化論述。</div>
+              <div class="task-desc">將 AI 與個人分析整理為 Claim（主張）、Evidence（證據）、Reasoning（推理）結構化論述。</div>
             </div>
           </div>
 
           <!-- 任務 6 -->
-          <div class="task-item" data-task-id="6" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 06</span>
-                <span class="task-code-badge">DEAR</span>
+          <div class="task-card" data-tid="6" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 06</span>
+                <code>DEAR</code>
               </div>
               <div class="task-title">6. DEAR 建模歷程梳理</div>
               <div class="task-desc">整理 Design（初模）、Elaborate（精煉）、Apply（推論）、Revise（修訂）的模型演進歷程。</div>
@@ -1854,540 +1644,486 @@
           </div>
 
           <!-- 任務 7 -->
-          <div class="task-item" data-task-id="7" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 07</span>
-                <span class="task-code-badge">AI Log</span>
+          <div class="task-card" data-tid="7" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 07</span>
+                <code>AI Log</code>
               </div>
               <div class="task-title">7. AI Interaction Log 存檔</div>
-              <div class="task-desc">完整保存 Prompt 提問、AI 回覆、自主懷疑與資料查證歷程，整理為規範的 Markdown 格式存檔。</div>
+              <div class="task-desc">完整保存 Prompt 提問、AI 回覆、自主懷疑與資料查證歷程，整理為規範 Markdown 格式。</div>
             </div>
           </div>
 
           <!-- 任務 8 -->
-          <div class="task-item" data-task-id="8" onclick="toggleTask(this)">
-            <div class="task-checkbox">✔</div>
-            <div class="task-content">
-              <div class="task-header-row">
-                <span class="task-badge">Task 08</span>
-                <span class="task-code-badge">Ticket</span>
+          <div class="task-card" data-tid="8" onclick="toggleTaskItem(this)">
+            <div class="task-checkbox-box">✔</div>
+            <div class="task-body">
+              <div class="task-meta">
+                <span class="task-id-badge">TASK 08</span>
+                <code>Exit Ticket</code>
               </div>
               <div class="task-title">8. Exit Ticket 課堂末檢核繳交</div>
               <div class="task-desc">在下課前完成 3 句自我檢核回饋（今天學到什麼、最驚訝的一件事、下週想探索什麼）。</div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 思考工具箱：CER 與 DEAR 與 CLIL (Scientific Toolbox) -->
-  <section id="toolbox" style="background: rgba(137, 194, 217, 0.15);">
+  <!-- 思考工具箱 (Toolbox) -->
+  <section id="toolbox" style="background: rgba(255, 255, 255, 0.5);">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Scientific Thinking Framework</span>
+        <span class="section-tag">Thinking Framework</span>
         <h2 class="section-title">科學家的思考工具箱</h2>
-        <p class="section-desc">這門課我們不背誦零碎知識，我們透過四種強大框架有意識地理清思路、批判查證與科學表達：</p>
+        <p class="section-desc">我們不背誦零碎知識，我們透過四種強大框架有意識地理清思路、批判查證與科學表達：</p>
       </div>
 
-      <div class="toolbox-tabs">
-        <button class="tab-btn active" onclick="switchTab('cer', this)">🎯 CER 論證模型</button>
-        <button class="tab-btn" onclick="switchTab('dear', this)">🔄 DEAR 建模歷程</button>
-        <button class="tab-btn" onclick="switchTab('clil', this)">🗣️ 科學論述六句組 (CLIL)</button>
-        <button class="tab-btn" onclick="switchTab('ailog', this)">🤖 AI 批判協作與 Log 規範</button>
+      <div class="tabs-nav">
+        <button class="tab-trigger active" onclick="showTab('tab-cer', this)">🎯 CER 論證模型</button>
+        <button class="tab-trigger" onclick="showTab('tab-dear', this)">🔄 DEAR 建模歷程</button>
+        <button class="tab-trigger" onclick="showTab('tab-clil', this)">🗣️ 科學論述六句組 (CLIL)</button>
+        <button class="tab-trigger" onclick="showTab('tab-ai', this)">🤖 AI 批判協作與 Log</button>
       </div>
 
       <!-- Tab 1: CER -->
-      <div id="tab-cer" class="tab-content active">
-        <div class="cer-grid">
+      <div class="tab-pane active" id="tab-cer">
+        <div class="cer-container">
           <div class="cer-card">
-            <div class="cer-letter">C — Claim</div>
-            <div class="cer-role">主張：我對現象的看法與假說是什麼？</div>
+            <div class="cer-title-letter">C — Claim</div>
+            <div class="cer-card-title">主張：我對現象的看法與假說是什麼？</div>
             <div class="cer-prompt">“What do I think is happening?”</div>
-            <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.7;">
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
               <strong>範例：</strong>我認為全球地震並不是均勻隨機分布的，而是高度集中在狹窄的板塊邊界帶狀區域。
             </p>
           </div>
-
           <div class="cer-card">
-            <div class="cer-letter">E — Evidence</div>
-            <div class="cer-role">證據：我有什麼觀測數據或圖表能支持？</div>
+            <div class="cer-title-letter">E — Evidence</div>
+            <div class="cer-card-title">證據：我有什麼觀測數據或圖表能支持？</div>
             <div class="cer-prompt">“What data support my claim?”</div>
-            <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.7;">
-              <strong>範例：</strong>從全球震央分布圖中，震央密集沿著環太平洋海溝與大西洋中洋脊排列，且震源深度隨距離隱沒帶變深。
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+              <strong>範例：</strong>全球震央分布圖顯示震央密集沿著海溝與中洋脊排列，且震源深度隨遠離隱沒帶而加深。
             </p>
           </div>
-
           <div class="cer-card">
-            <div class="cer-letter">R — Reasoning</div>
-            <div class="cer-role">推理：如何運用物理原理將證據與主張連結？</div>
+            <div class="cer-title-letter">R — Reasoning</div>
+            <div class="cer-card-title">推理：如何運用物理原理將證據與主張連結？</div>
             <div class="cer-prompt">“Why does this evidence support my claim?”</div>
-            <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.7;">
-              <strong>範例：</strong>板塊相互碰撞與隱沒時，摩擦力累積彈性應變能，當超過岩石強度時破裂釋放即產生帶狀地震，因此支持非隨機分佈的主張。
+            <p style="font-size: 0.95rem; color: var(--text-muted);">
+              <strong>範例：</strong>板塊相對運動時在邊界摩擦累積彈性應變能，超過岩石極限破裂產生帶狀地震，因此支持非隨機分佈。
             </p>
           </div>
         </div>
       </div>
 
       <!-- Tab 2: DEAR -->
-      <div id="tab-dear" class="tab-content">
-        <div class="cer-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-          <div class="cer-card">
-            <div class="cer-letter" style="color: var(--wc-ocean);">D — Design</div>
-            <div class="cer-role">設計初模 (Initial Model)</div>
-            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65;">
-              <strong>步驟：</strong>觀察現象後，提出最初步的簡化假說模型。<br>
-              <em>例：假設板塊剛體漂浮並在海溝處直線向下插進地函。</em>
-            </p>
+      <div class="tab-pane" id="tab-dear">
+        <div class="cer-container" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+          <div class="cer-card" style="border-left-color: var(--c-ocean);">
+            <div class="cer-title-letter" style="color: var(--c-ocean);">D — Design</div>
+            <div class="cer-card-title">設計初模 (Initial Model)</div>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">觀察現象後，提出最初步的簡化假說模型（例：板塊剛體直線向下插進地函）。</p>
           </div>
-          <div class="cer-card">
-            <div class="cer-letter" style="color: var(--wc-gold);">E — Elaborate</div>
-            <div class="cer-role">精煉模型 (Refine Model)</div>
-            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65;">
-              <strong>步驟：</strong>納入更多定量觀測資料（如震源深度剖面、重力異常負值、走時曲線），精緻化參數。
-            </p>
+          <div class="cer-card" style="border-left-color: var(--c-amber);">
+            <div class="cer-title-letter" style="color: var(--c-ochre);">E — Elaborate</div>
+            <div class="cer-card-title">精煉模型 (Refine Model)</div>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">納入更多定量觀測（震源深度剖面、重力異常負值、走時曲線），精緻化參數。</p>
           </div>
-          <div class="cer-card">
-            <div class="cer-letter" style="color: var(--wc-coral);">A — Apply</div>
-            <div class="cer-role">應用推論 (Apply Model)</div>
-            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65;">
-              <strong>步驟：</strong>運用建構好的模型去推論新區域或預測尚未觀測的現象（如預測火山島弧與深震源位置）。
-            </p>
+          <div class="cer-card" style="border-left-color: var(--c-coral);">
+            <div class="cer-title-letter" style="color: var(--c-terracotta);">A — Apply</div>
+            <div class="cer-card-title">應用推論 (Apply Model)</div>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">運用建構好的模型去推論新區域或預測新現象（如預測島弧火山與深震源分布）。</p>
           </div>
-          <div class="cer-card">
-            <div class="cer-letter" style="color: var(--wc-sage);">R — Revise</div>
-            <div class="cer-role">修訂模型 (Revise Model)</div>
-            <p style="font-size: 0.92rem; color: var(--ink-soft); line-height: 1.65;">
-              <strong>步驟：</strong>當發現模型無法解釋反例（如沖繩海槽背弧張裂）時，勇於反思並修正原模型！
-            </p>
+          <div class="cer-card" style="border-left-color: var(--c-sage);">
+            <div class="cer-title-letter" style="color: var(--c-sage);">R — Revise</div>
+            <div class="cer-card-title">修訂模型 (Revise Model)</div>
+            <p style="font-size: 0.92rem; color: var(--text-muted);">當發現模型無法解釋反例（如沖繩海槽背弧張裂）時，反思並修正原模型！</p>
           </div>
         </div>
       </div>
 
-      <!-- Tab 3: CLIL Six-Sentence Scientific Argument (Exact match from README) -->
-      <div id="tab-clil" class="tab-content">
-        <div class="sentence-box">
-          <div class="sentence-box-intro">
-            <strong>🎯 科學論述六句組 (Six-Sentence Scientific Argument)</strong><br>
-            這是在撰寫學術報告、中英文雙語作業與小組口頭報告時最強大的「思考骨架」，點擊右側按鈕即可一鍵複製：
-          </div>
+      <!-- Tab 3: CLIL 六句組 -->
+      <div class="tab-pane" id="tab-clil">
+        <div class="sentence-bank-card">
+          <p
+            style="font-size: 0.98rem; color: var(--text-muted); margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px dashed var(--border-soft);">
+            🎯 <strong>科學論述六句組 (Six-Sentence Scientific Argument)</strong>：撰寫學術作業與口頭發表的強大骨架，點擊右側按鈕即可一鍵複製：
+          </p>
 
-          <!-- 1. Observation -->
-          <div class="sentence-item">
+          <div class="sentence-row">
             <div>
-              <span class="sentence-num-badge">1. Observation 觀察現象</span>
-              <div class="sentence-text">We observe that [phenomenon].</div>
+              <span class="sentence-seq">1. Observation 觀察</span>
+              <div class="sentence-en">We observe that [phenomenon].</div>
               <div class="sentence-zh">我們觀察到……（描述地圖、觀測數據或物理現象）</div>
             </div>
-            <button class="btn-copy" onclick="copySentence('We observe that [phenomenon].')">📋 複製句型</button>
+            <button class="btn-copy" onclick="copyText('We observe that [phenomenon].')">📋 複製句型</button>
           </div>
 
-          <!-- 2. Question -->
-          <div class="sentence-item">
+          <div class="sentence-row">
             <div>
-              <span class="sentence-num-badge">2. Question 提出問題</span>
-              <div class="sentence-text">We want to know why [phenomenon occurs].</div>
+              <span class="sentence-seq">2. Question 提問</span>
+              <div class="sentence-en">We want to know why [phenomenon occurs].</div>
               <div class="sentence-zh">我們想探究為什麼……（鎖定核心科學探究問題）</div>
             </div>
-            <button class="btn-copy" onclick="copySentence('We want to know why [phenomenon occurs].')">📋 複製句型</button>
+            <button class="btn-copy" onclick="copyText('We want to know why [phenomenon occurs].')">📋 複製句型</button>
           </div>
 
-          <!-- 3. Hypothesis -->
-          <div class="sentence-item">
+          <div class="sentence-row">
             <div>
-              <span class="sentence-num-badge">3. Hypothesis 提出假說</span>
-              <div class="sentence-text">We hypothesize that [explanation].</div>
+              <span class="sentence-seq">3. Hypothesis 假說</span>
+              <div class="sentence-en">We hypothesize that [explanation].</div>
               <div class="sentence-zh">我們假設……（提出初步簡化假說或模型）</div>
             </div>
-            <button class="btn-copy" onclick="copySentence('We hypothesize that [explanation].')">📋 複製句型</button>
+            <button class="btn-copy" onclick="copyText('We hypothesize that [explanation].')">📋 複製句型</button>
           </div>
 
-          <!-- 4. Prediction -->
-          <div class="sentence-item">
+          <div class="sentence-row">
             <div>
-              <span class="sentence-num-badge">4. Prediction 推導預測</span>
-              <div class="sentence-text">If our hypothesis is correct, we expect [prediction].</div>
+              <span class="sentence-seq">4. Prediction 預測</span>
+              <div class="sentence-en">If our hypothesis is correct, we expect [prediction].</div>
               <div class="sentence-zh">若假說正確，我們預期會觀測到……（從物理邏輯推導預期結果）</div>
             </div>
-            <button class="btn-copy" onclick="copySentence('If our hypothesis is correct, we expect [prediction].')">📋 複製句型</button>
+            <button class="btn-copy" onclick="copyText('If our hypothesis is correct, we expect [prediction].')">📋
+              複製句型</button>
           </div>
 
-          <!-- 5. Evidence -->
-          <div class="sentence-item">
+          <div class="sentence-row">
             <div>
-              <span class="sentence-num-badge">5. Evidence 檢驗證據</span>
-              <div class="sentence-text">The evidence shows that [data pattern].</div>
-              <div class="sentence-zh">證據與資料顯示……（以震波走時、重力負值或 PyGMT 圖表佐證）</div>
+              <span class="sentence-seq">5. Evidence 證據</span>
+              <div class="sentence-en">The evidence shows that [data pattern].</div>
+              <div class="sentence-zh">證據與資料顯示……（以走時曲線、重力或 PyGMT 圖表佐證）</div>
             </div>
-            <button class="btn-copy" onclick="copySentence('The evidence shows that [data pattern].')">📋 複製句型</button>
+            <button class="btn-copy" onclick="copyText('The evidence shows that [data pattern].')">📋 複製句型</button>
           </div>
 
-          <!-- 6. Conclusion / Revision -->
-          <div class="sentence-item">
+          <div class="sentence-row">
             <div>
-              <span class="sentence-num-badge">6. Conclusion/Revision 結論與修訂</span>
-              <div class="sentence-text">Therefore, we support / revise our model.</div>
+              <span class="sentence-seq">6. Conclusion/Revision 結論與修訂</span>
+              <div class="sentence-en">Therefore, we support / revise our model.</div>
               <div class="sentence-zh">因此我們支持／修正我們的模型。（展現模型迭代的科學精神）</div>
             </div>
-            <button class="btn-copy" onclick="copySentence('Therefore, we support / revise our model.')">📋 複製句型</button>
+            <button class="btn-copy" onclick="copyText('Therefore, we support / revise our model.')">📋 複製句型</button>
           </div>
-
         </div>
       </div>
 
-      <!-- Tab 4: AI Literacy & Interaction Log (Exact match from README) -->
-      <div id="tab-ailog" class="tab-content">
-        <div class="ai-guideline-card">
-          <div class="ai-quote-box">
+      <!-- Tab 4: AI 批判與 Log -->
+      <div class="tab-pane" id="tab-ai">
+        <div class="sentence-bank-card">
+          <div
+            style="background: var(--c-purple-wash); border-left: 5px solid var(--c-purple); padding: 1.2rem 1.6rem; border-radius: 12px; margin-bottom: 1.8rem;">
             💡 <strong>AI 核心守則：</strong>「AI 可以產生答案，但理解與判斷答案是你的責任。」<br>
-            <span style="font-size: 0.95rem; font-weight: 500; color: var(--ink-dark);">
+            <span style="font-size: 0.95rem; font-weight: 500; color: var(--text-muted);">
               <em>“AI can generate an answer, but understanding the answer is your responsibility.”</em>
             </span>
           </div>
 
-          <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 1rem; color: var(--ink-dark);">
-            🤖 AI 批判協作精選語句 (AI Verification Patterns)
-          </h3>
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 1rem;">🤖 AI 批判協作精選句型 (AI Verification
+            Patterns)</h4>
 
-          <div class="sentence-box" style="margin-bottom: 2rem;">
-            <div class="sentence-item">
+          <div style="display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 2rem;">
+            <div class="sentence-row">
               <div>
-                <span class="sentence-num-badge">Prompting 導引提問</span>
-                <div class="sentence-text">Do not give me the final answer directly. Guide me step by step.</div>
-                <div class="sentence-zh">不要直接給我最終答案，請一步步引導我思考。（避免失去探究樂趣與認知歷程）</div>
+                <span class="sentence-seq">Prompting 導引提問</span>
+                <div class="sentence-en">Do not give me the final answer directly. Guide me step by step.</div>
+                <div class="sentence-zh">不要直接給我最終答案，請一步步引導我思考。</div>
               </div>
-              <button class="btn-copy" onclick="copySentence('Do not give me the final answer directly. Guide me step by step.')">📋 複製 Prompt</button>
+              <button class="btn-copy"
+                onclick="copyText('Do not give me the final answer directly. Guide me step by step.')">📋 複製
+                Prompt</button>
             </div>
 
-            <div class="sentence-item">
+            <div class="sentence-row">
               <div>
-                <span class="sentence-num-badge">Verification 批判驗證</span>
-                <div class="sentence-text">AI suggested that [...], but we verified it by [...].</div>
-                <div class="sentence-zh">AI 建議了……，但我們透過……進行了驗證。（作業評量中能拿到高分的關鍵句）</div>
+                <span class="sentence-seq">Verification 批判驗證</span>
+                <div class="sentence-en">AI suggested that [...], but we verified it by [...].</div>
+                <div class="sentence-zh">AI 建議了……，但我們透過……進行了驗證。</div>
               </div>
-              <button class="btn-copy" onclick="copySentence('AI suggested that [...], but we verified it by [...].')">📋 複製句型</button>
-            </div>
-
-            <div class="sentence-item">
-              <div>
-                <span class="sentence-num-badge">Clarification 釐清物理</span>
-                <div class="sentence-text">What physical evidence supports this claim in geophysics?</div>
-                <div class="sentence-zh">在地球物理學中，有什麼物理或觀測證據支持這項主張？</div>
-              </div>
-              <button class="btn-copy" onclick="copySentence('What physical evidence supports this claim in geophysics?')">📋 複製 Prompt</button>
+              <button class="btn-copy" onclick="copyText('AI suggested that [...], but we verified it by [...].')">📋
+                複製句型</button>
             </div>
           </div>
 
-          <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 0.8rem; color: var(--ink-dark);">
-            📝 AI Interaction Log 必備記錄 4 大要素
-          </h3>
-          <p style="font-size: 0.95rem; color: var(--ink-soft); margin-bottom: 1rem;">
-            每一次實作作業需將 AI 對話轉錄為 Markdown 格式，附於筆記本末端或專案網站中：
-          </p>
-
-          <div class="ai-log-step-grid">
-            <div class="ai-log-step">
-              <h4>1. 提問 Prompt</h4>
-              <p>完整保留你向 AI 提出的問題，包含設定的情境與約束條件。</p>
+          <h4 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.8rem;">📝 AI Interaction Log 必備記錄 4 大要素</h4>
+          <div class="four-c-grid">
+            <div class="four-c-card">
+              <span class="c-badge c1">1. 提問 Prompt</span>
+              <p class="c-desc">完整保留向 AI 提出的問題，包含設定的情境與約束條件。</p>
             </div>
-            <div class="ai-log-step">
-              <h4>2. AI 原始回覆</h4>
-              <p>簡要摘錄 AI 產出的關鍵推論、假說或 Python 程式代碼。</p>
+            <div class="four-c-card">
+              <span class="c-badge c2">2. AI 原始回覆</span>
+              <p class="c-desc">簡要摘錄 AI 產出的關鍵推論、假說或 Python 程式代碼。</p>
             </div>
-            <div class="ai-log-step">
-              <h4>3. 自主懷疑與查證</h4>
-              <p>你如何發現 AI 回覆可能存在的幻覺（Hallucination）或不合常理之處？</p>
+            <div class="four-c-card">
+              <span class="c-badge c3">3. 自主懷疑查證</span>
+              <p class="c-desc">你如何發現 AI 回覆可能存在的幻覺（Hallucination）或不合常理處？</p>
             </div>
-            <div class="ai-log-step">
-              <h4>4. 模型修正結論</h4>
-              <p>經過教科書、觀測資料或同儕討論後，你最後採信或修正的結論為何。</p>
+            <div class="four-c-card">
+              <span class="c-badge c4">4. 模型修正結論</span>
+              <p class="c-desc">經教科書、觀測資料或同儕討論後，你最後採信或修正的結論。</p>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- 📂 專案檔案清單與教材下載區 (Repository Contents & Resources) -->
+  <!-- 📂 專案檔案清單與教材下載區 -->
   <section id="resources">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Repository Contents</span>
-        <h2 class="section-title">課程專案檔案與教學資源</h2>
-        <p class="section-desc">本專案收錄第 1 週完整的 Marp 投影片、雙語口播講稿、逐字稿與 CLIL 句型附錄，可直接查閱或下載：</p>
+        <span class="section-tag">Repository Contents</span>
+        <h2 class="section-title">課程專案檔案與教材庫</h2>
+        <p class="section-desc">本專案收錄第 1 週完整的 Marp 投影片、雙語口播講稿、逐字稿與 CLIL 句型附錄，可直接查閱：</p>
       </div>
 
       <div class="resource-grid">
-
-        <!-- File 1: PPT 詳細版 -->
-        <div class="resource-card">
-          <div class="resource-icon-wrap">📑</div>
-          <span class="resource-tag ppt">Marp 投影片 · 16:9</span>
+        <div class="resource-box">
+          <div class="resource-icon">📑</div>
+          <span class="resource-badge">Marp 投影片 · 16:9</span>
           <h3 class="resource-title">地球物理通論_第一堂課_PPT詳細版.md</h3>
-          <p class="resource-desc">
-            Marp 格式完整教學簡報，涵蓋 18 週學習地圖、任務 1~8 逐步指引、CER/DEAR 解說、評量標準與專題網站結構。
-          </p>
-          <div class="resource-footer">
-            <span class="resource-target">授課簡報 / 課後複習</span>
-            <a href="地球物理通論_第一堂課_PPT詳細版.md" class="btn-resource-view">查看檔案 →</a>
+          <p class="resource-desc">Marp 格式完整教學簡報，涵蓋 18 週學習地圖、任務 1~8 指引、CER/DEAR 解說與評量標準。</p>
+          <div class="resource-action">
+            <span style="font-size: 0.82rem; color: var(--text-light);">簡報 / 課後複習</span>
+            <a href="地球物理通論_第一堂課_PPT詳細版.md" class="btn-view-doc">開啟檔案 →</a>
           </div>
         </div>
 
-        <!-- File 2: 3小時完整講稿 -->
-        <div class="resource-card">
-          <div class="resource-icon-wrap">🎙️</div>
-          <span class="resource-tag script">中英對照 · 3小時講稿</span>
+        <div class="resource-box">
+          <div class="resource-icon">🎙️</div>
+          <span class="resource-badge">雙語逐字稿 · 3小時</span>
           <h3 class="resource-title">地球物理通論第一堂課｜3小時中英文對照完整講稿.md</h3>
-          <p class="resource-desc">
-            依時間軸（09:00–12:00）劃分 8 大任務之教師中英對照逐字講稿、黑板板書架構設計與課堂時間管理指引。
-          </p>
-          <div class="resource-footer">
-            <span class="resource-target">口播參考 / EMI指導</span>
-            <a href="地球物理通論第一堂課｜3小時中英文對照完整講稿.md" class="btn-resource-view">查看檔案 →</a>
+          <p class="resource-desc">依時間軸（09:00–12:00）劃分 8 大任務之教師中英對照逐字講稿、板書設計與時間管理。</p>
+          <div class="resource-action">
+            <span style="font-size: 0.82rem; color: var(--text-light);">口播參考 / EMI指導</span>
+            <a href="地球物理通論第一堂課｜3小時中英文對照完整講稿.md" class="btn-view-doc">開啟檔案 →</a>
           </div>
         </div>
 
-        <!-- File 3: 開場精簡講稿 -->
-        <div class="resource-card">
-          <div class="resource-icon-wrap">💡</div>
-          <span class="resource-tag guide">課前導讀 · 理念精簡</span>
+        <div class="resource-box">
+          <div class="resource-icon">💡</div>
+          <span class="resource-badge">課前導讀 · 理念精簡</span>
           <h3 class="resource-title">地球物理第一次上課_中英對照講稿.md</h3>
-          <p class="resource-desc">
-            雙語開場理念與 CER 思考精簡講稿，深入淺出介紹為何用英文學科學、示範地震分布與板塊構造之 CER 探究。
-          </p>
-          <div class="resource-footer">
-            <span class="resource-target">學生導讀 / 開場白</span>
-            <a href="地球物理第一次上課_中英對照講稿.md" class="btn-resource-view">查看檔案 →</a>
+          <p class="resource-desc">雙語開場理念與 CER 思考講稿精簡版，深入淺出介紹為何用英文學科學、示範地震 CER 探究。</p>
+          <div class="resource-action">
+            <span style="font-size: 0.82rem; color: var(--text-light);">學生導讀 / 開場白</span>
+            <a href="地球物理第一次上課_中英對照講稿.md" class="btn-view-doc">開啟檔案 →</a>
           </div>
         </div>
 
-        <!-- File 4: CLIL 句型附錄 -->
-        <div class="resource-card">
-          <div class="resource-icon-wrap">📖</div>
-          <span class="resource-tag clil">句型庫 · 三例擴充</span>
+        <div class="resource-box">
+          <div class="resource-icon">📖</div>
+          <span class="resource-badge">句型庫 · 三例擴充</span>
           <h3 class="resource-title">地球物理通論第一堂課｜CLIL句型與三例擴充附錄.md</h3>
-          <p class="resource-desc">
-            收錄 Level 1~8 漸進科學句型、CER/DEAR 專用語、AI Prompt 樣板、小組討論常用語與豐富的三例地科例句庫。
-          </p>
-          <div class="resource-footer">
-            <span class="resource-target">報告小抄 / 作業撰寫</span>
-            <a href="地球物理通論第一堂課｜CLIL句型與三例擴充附錄.md" class="btn-resource-view">查看檔案 →</a>
+          <p class="resource-desc">收錄 Level 1~8 漸進科學句型、CER/DEAR 專用語、AI Prompt 與三例豐富地科句庫。</p>
+          <div class="resource-action">
+            <span style="font-size: 0.82rem; color: var(--text-light);">報告小抄 / 作業撰寫</span>
+            <a href="地球物理通論第一堂課｜CLIL句型與三例擴充附錄.md" class="btn-view-doc">開啟檔案 →</a>
           </div>
         </div>
-
       </div>
 
-      <!-- Marp 投影片使用說明小卡 (From README) -->
-      <div class="marp-instruction-card">
-        <div class="marp-icon">🖥️</div>
-        <div class="marp-text">
-          <h4>如何預覽與匯出 Marp 教學投影片？</h4>
-          <p>
-            本專案的投影片檔案採用國際開源標準 <strong>Marp Markdown</strong> 格式。在 VS Code 中安裝外掛 <code>Marp for VS Code</code> 後，開啟 <code>地球物理通論_第一堂課_PPT詳細版.md</code>，點擊右上角「Marp Preview」即可全螢幕簡報播放，或直接一鍵輸出為 <strong>PDF</strong> 或 <strong>HTML 網頁簡報</strong>！
-          </p>
+      <div
+        style="background: var(--bg-surface); border: 1.5px dashed var(--c-amber); border-radius: var(--radius-md); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h4 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 0.2rem;">🖥️ 如何使用 Marp 預覽教學投影片？</h4>
+          <p style="font-size: 0.92rem; color: var(--text-muted);">VS Code 安裝套件 <code>Marp for VS Code</code> 後，開啟
+            Markdown 簡報點擊右上角「Marp Preview」即可全螢幕播放或輸出 PDF/HTML！</p>
         </div>
-        <a href="README.md" class="btn-brush btn-secondary" style="font-size: 0.95rem; white-space: nowrap;">📖 查閱完整 README 指引</a>
+        <a href="README.md" class="btn btn-outline" style="font-size: 0.9rem;">📖 閱讀 README.md</a>
       </div>
-
     </div>
   </section>
 
-  <!-- 18 週學習地圖 (18-Week Interactive Adventure) -->
-  <section id="roadmap" style="background: rgba(245, 239, 227, 0.45);">
+  <!-- 18 週學習地圖 -->
+  <section id="roadmap" style="background: rgba(255, 255, 255, 0.4);">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">18-Week Adventure Map</span>
+        <span class="section-tag">18-Week Roadmap</span>
         <h2 class="section-title">18 週精彩學習旅程</h2>
         <p class="section-desc">從第 1 週的工具啟動，到親手進行野外折射震測、重力場 3D 建模，最後在 GitHub 發布個人作品！</p>
       </div>
 
-      <div class="timeline-filter-bar">
-        <button class="filter-chip active" onclick="filterWeeks('all', this)">全部 18 週</button>
-        <button class="filter-chip" onclick="filterWeeks('tool', this)">💻 工具與地圖 (W1–4)</button>
-        <button class="filter-chip" onclick="filterWeeks('seismic', this)">⚡ 折射震測 (W5–8)</button>
-        <button class="filter-chip" onclick="filterWeeks('gravity', this)">🌍 重力與地熱 (W9–14)</button>
-        <button class="filter-chip" onclick="filterWeeks('project', this)">🚀 專題發表與參訪 (W15–18)</button>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterRoadmap('all', this)">全部 18 週</button>
+        <button class="filter-btn" onclick="filterRoadmap('tool', this)">💻 工具與地圖 (W1–4)</button>
+        <button class="filter-btn" onclick="filterRoadmap('seismic', this)">⚡ 折射震測 (W5–8)</button>
+        <button class="filter-btn" onclick="filterRoadmap('gravity', this)">🌍 重力與地熱 (W9–14)</button>
+        <button class="filter-btn" onclick="filterRoadmap('project', this)">🚀 專題發表與參訪 (W15–18)</button>
       </div>
 
-      <div class="timeline-grid" id="timeline-container">
+      <div class="timeline-grid" id="timeline-list">
         <!-- Week 1 -->
-        <div class="week-card highlight" data-category="tool">
-          <span class="week-badge">Week 01 · 今日首航</span>
-          <h4 class="week-title">課程導航、任務模式、系統安裝</h4>
-          <div class="week-task">認識 8 大任務模式、啟動 Colab 與 GitHub、體驗 Gemini 批判式地球物理探究。</div>
+        <div class="week-card highlight" data-cat="tool">
+          <span class="week-tag">Week 01 · 今日首航</span>
+          <h4 class="week-name">課程導航、任務模式、系統安裝</h4>
+          <div class="week-desc">認識 8 大任務模式、啟動 Colab 與 GitHub、體驗 Gemini 批判式探究。</div>
         </div>
 
         <!-- Week 2 -->
-        <div class="week-card" data-category="tool">
-          <span class="week-badge">Week 02 · 視覺化</span>
-          <h4 class="week-title">PyGMT 繪製全球地形與板塊邊界圖</h4>
-          <div class="week-task">用 Python 畫出震撼的全球地形起伏，標示深海溝、隱沒帶與中洋脊。</div>
+        <div class="week-card" data-cat="tool">
+          <span class="week-tag">Week 02 · 視覺化</span>
+          <h4 class="week-name">PyGMT 繪製全球地形與板塊邊界圖</h4>
+          <div class="week-desc">用 Python 畫出震撼的全球地形起伏，標示深海溝、隱沒帶與中洋脊。</div>
         </div>
 
         <!-- Week 3-4 -->
-        <div class="week-card" data-category="tool">
-          <span class="week-badge">Week 03–04 · 實體化</span>
-          <h4 class="week-title">板塊構造與地形 3D 建模列印</h4>
-          <div class="week-task">將台灣與琉球海溝轉為 3D 模型，親手觸摸實體模型探討板塊隱沒立體幾何。</div>
+        <div class="week-card" data-cat="tool">
+          <span class="week-tag">Week 03–04 · 實體化</span>
+          <h4 class="week-name">板塊構造與地形 3D 建模列印</h4>
+          <div class="week-desc">將台灣與琉球海溝轉為 3D 模型，親手觸摸實體模型探討板塊立體幾何。</div>
         </div>
 
         <!-- Week 5 -->
-        <div class="week-card highlight" data-category="seismic">
-          <span class="week-badge">Week 05 · 野外實戰</span>
-          <h4 class="week-title">校園野外實驗：折射震測實地量測</h4>
-          <div class="week-task">走出教室！在校園草坪鋪設受震線，敲擊震源，實地記錄地下折射震波走時。</div>
+        <div class="week-card highlight" data-cat="seismic">
+          <span class="week-tag">Week 05 · 野外實戰</span>
+          <h4 class="week-name">校園野外實驗：折射震測實地量測</h4>
+          <div class="week-desc">走出教室！在校園草坪鋪設受震線，敲擊震源，實地記錄地下折射震波走時。</div>
         </div>
 
         <!-- Week 6-7 -->
-        <div class="week-card" data-category="seismic">
-          <span class="week-badge">Week 06–07 · 原理解析</span>
-          <h4 class="week-title">折射震測原理、走時曲線走線與模型</h4>
-          <div class="week-task">繪製走時曲線（Travel-Time Curves），計算校園地下地層深度與各層速度。</div>
+        <div class="week-card" data-cat="seismic">
+          <span class="week-tag">Week 06–07 · 原理解析</span>
+          <h4 class="week-name">折射震測原理、走時曲線走線與模型</h4>
+          <div class="week-desc">繪製走時曲線（Travel-Time Curves），計算校園地下地層深度與各層速度。</div>
         </div>
 
         <!-- Week 8 -->
-        <div class="week-card" data-category="seismic">
-          <span class="week-badge">Week 08 · 概念檢核</span>
-          <h4 class="week-title">期中檢核 (40%)</h4>
-          <div class="week-task">地球物理基礎理論（震測、重力、地磁、板塊運動）觀念理解與公式應用。</div>
+        <div class="week-card" data-cat="seismic">
+          <span class="week-tag">Week 08 · 概念檢核</span>
+          <h4 class="week-name">期中檢核 (40%)</h4>
+          <div class="week-desc">地球物理基礎理論（震測、重力、地磁、板塊運動）觀念理解與公式應用。</div>
         </div>
 
         <!-- Week 9-10 -->
-        <div class="week-card" data-category="gravity">
-          <span class="week-badge">Week 09–10 · 重力場</span>
-          <h4 class="week-title">重力探勘、密度異常分析與 Geoid 3D</h4>
-          <div class="week-task">透視看不見的地底密度差異！推論山根與沉積盆地，列印大地水準面模型。</div>
+        <div class="week-card" data-cat="gravity">
+          <span class="week-tag">Week 09–10 · 重力場</span>
+          <h4 class="week-name">重力探勘、密度異常分析與 Geoid 3D</h4>
+          <div class="week-desc">透視看不見的地底密度差異！推論山根與沉積盆地，列印大地水準面模型。</div>
         </div>
 
         <!-- Week 11 -->
-        <div class="week-card" data-category="gravity">
-          <span class="week-badge">Week 11 · 產學連結</span>
-          <h4 class="week-title">專家專題演講（學界/業界連結）</h4>
-          <div class="week-task">邀請第一線地球物理與防災業界專家，分享科技應用、地震預警與未來職涯發展。</div>
+        <div class="week-card" data-cat="gravity">
+          <span class="week-tag">Week 11 · 產學連結</span>
+          <h4 class="week-name">專家專題演講（學界/業界連結）</h4>
+          <div class="week-desc">邀請第一線地球物理與防災業界專家，分享科技應用、地震預警與職涯方向。</div>
         </div>
 
         <!-- Week 12 -->
-        <div class="week-card" data-category="gravity">
-          <span class="week-badge">Week 12 · 綠能地科</span>
-          <h4 class="week-title">地熱流分析與板塊構造能源</h4>
-          <div class="week-task">分析全球與台灣地熱流分佈，結合地溫梯度推導地下熱源與綠色能源開發。</div>
+        <div class="week-card" data-cat="gravity">
+          <span class="week-tag">Week 12 · 綠能地科</span>
+          <h4 class="week-name">地熱流分析與板塊構造能源</h4>
+          <div class="week-desc">分析全球與台灣地熱流分佈，結合地溫梯度推導地下熱源與綠色能源開發。</div>
         </div>
 
         <!-- Week 13-14 -->
-        <div class="week-card" data-category="gravity">
-          <span class="week-badge">Week 13–14 · 電阻與地磁</span>
-          <h4 class="week-title">地電與地磁方法（電阻率、海底地磁條帶）</h4>
-          <div class="week-task">地電阻剖面探測地下水層，結合海底擴張地磁條帶倒轉印記印證板塊擴張。</div>
+        <div class="week-card" data-cat="gravity">
+          <span class="week-tag">Week 13–14 · 電阻與地磁</span>
+          <h4 class="week-name">地電與地磁方法（電阻率、海底地磁條帶）</h4>
+          <div class="week-desc">地電阻剖面探測地下水層，結合海底擴張地磁條帶倒轉印記印證板塊擴張。</div>
         </div>
 
         <!-- Week 15-16 -->
-        <div class="week-card highlight" data-category="project">
-          <span class="week-badge">Week 15–16 · 榮耀成果</span>
-          <h4 class="week-title">期末專題 GitHub Pages 雙語公開發表</h4>
-          <div class="week-task">公開發表小組專題網站！展現 PyGMT 繪圖、AI 探究紀錄、CER 論證與雙語答辯。</div>
+        <div class="week-card highlight" data-cat="project">
+          <span class="week-tag">Week 15–16 · 榮耀成果</span>
+          <h4 class="week-name">期末專題 GitHub Pages 雙語公開發表</h4>
+          <div class="week-desc">公開發表小組專題網站！展現 PyGMT 繪圖、AI 探究紀錄、CER 論證與雙語答辯。</div>
         </div>
 
         <!-- Week 17-18 -->
-        <div class="week-card" data-category="project">
-          <span class="week-badge">Week 17–18 · 走出校園</span>
-          <h4 class="week-title">校外實習與業界／研究機構參訪</h4>
-          <div class="week-task">參訪中央氣象署、地質調查所或實務探勘現地，見證地球物理技術之真實運作！</div>
+        <div class="week-card" data-cat="project">
+          <span class="week-tag">Week 17–18 · 走出校園</span>
+          <h4 class="week-name">校外實習與業界／研究機構參訪</h4>
+          <div class="week-desc">參訪中央氣象署、地質調查所或實務探勘現地，見證地球物理真實運作！</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 評分標準小卡 (Grading Policy) -->
+  <!-- 評量方式 -->
   <section id="grading">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Grading Policy</span>
+        <span class="section-tag">Grading Policy</span>
         <h2 class="section-title">學期評量方式</h2>
         <p class="section-desc">我們重視每一位同學「探究歷程」與「實作過程」，而不僅僅是最後的標準答案！</p>
       </div>
 
-      <div class="cer-grid">
-        <div class="cer-card" style="border-left-color: var(--wc-ocean);">
-          <div class="cer-letter" style="color: var(--wc-ocean-deep);">40%</div>
-          <div class="cer-role">期中考 (Midterm Exam)</div>
-          <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;">
-            地球物理基礎理論（震測、重力、地磁、板塊運動）之觀念理解、走時計算與科學推導應用。
-          </p>
+      <div class="card-grid-3">
+        <div class="feature-card" style="border-left: 6px solid var(--c-ocean);">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--c-ocean-deep); margin-bottom: 0.5rem;">40%</div>
+          <h3 class="feature-title">期中考 (Midterm Exam)</h3>
+          <p class="feature-desc">地球物理基礎理論（震測、重力、地磁、板塊運動）觀念理解、走時計算與科學推導應用。</p>
         </div>
 
-        <div class="cer-card" style="border-left-color: var(--wc-coral);">
-          <div class="cer-letter" style="color: var(--wc-coral);">50%</div>
-          <div class="cer-role">實作與專題作業 (Hands-on & Projects)</div>
-          <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;">
-            Google Colab 程式實作、PyGMT 視覺化地圖、AI 探究互動紀錄 (AI Log)、CER 論證與 DEAR 模型修正歷程、GitHub Pages 專題網站成果。
-          </p>
+        <div class="feature-card" style="border-left: 6px solid var(--c-coral);">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--c-terracotta); margin-bottom: 0.5rem;">50%</div>
+          <h3 class="feature-title">實作與專題作業 (Projects)</h3>
+          <p class="feature-desc">Google Colab 程式執行、PyGMT 視覺化地圖、AI 探究紀錄 (AI Log)、CER 論證與 GitHub Pages 成果。</p>
         </div>
 
-        <div class="cer-card" style="border-left-color: var(--wc-sage);">
-          <div class="cer-letter" style="color: var(--wc-sage);">10%</div>
-          <div class="cer-role">平時成績 (Participation & Exit Ticket)</div>
-          <p style="font-size: 0.95rem; color: var(--ink-soft); line-height: 1.65;">
-            課堂出席與參與、小組合作互動、課堂即時提問討論、每週 Exit Ticket 繳交。
-          </p>
+        <div class="feature-card" style="border-left: 6px solid var(--c-sage);">
+          <div style="font-size: 2rem; font-weight: 900; color: var(--c-sage); margin-bottom: 0.5rem;">10%</div>
+          <h3 class="feature-title">平時成績 (Participation)</h3>
+          <p class="feature-desc">課堂出席與參與、小組合作互動、課堂即時提問討論、每週 Exit Ticket 繳交。</p>
         </div>
       </div>
 
-      <!-- README 核心評量精神提醒框 -->
       <div class="grading-alert">
-        ⚠️ <strong>評量核心精神：</strong>評分不僅重視「最終答案」，更重視<strong>思考探究的歷程、對 AI 輸出的驗證態度與模型的迭代修正能力</strong>。只要勇於探索、清晰記錄 AI 查證歷程並從錯誤中修正，就能取得卓越成績！
+        ⚠️ <strong>評量核心精神：</strong>評分不僅重視「最終答案」，更重視<strong>思考探究的歷程、對 AI 輸出的驗證態度與模型的迭代修正能力</strong>。只要勇於探索、清晰記錄 AI
+        查證歷程並從錯誤中修正，就能取得卓越成績！
       </div>
-
     </div>
   </section>
 
-  <!-- 新手生存常見問題 (FAQ) -->
-  <section id="faq" style="background: rgba(245, 239, 227, 0.5);">
+  <!-- FAQ 手風琴 -->
+  <section id="faq" style="background: rgba(255, 255, 255, 0.6);">
     <div class="container">
       <div class="section-header">
-        <span class="section-eyebrow">Got Questions?</span>
+        <span class="section-tag">Got Questions?</span>
         <h2 class="section-title">新手常問的小疑問</h2>
-        <p class="section-desc">第一次接觸 AI 輔助與雙語探究嗎？別擔心，老師整理了以下解答：</p>
+        <p class="section-desc">第一次接觸雙語探究與 AI 協作嗎？別擔心，老師整理了以下解答：</p>
       </div>
 
-      <div class="faq-grid">
-        <div class="faq-card open" onclick="toggleFaq(this)">
+      <div class="faq-list">
+        <div class="faq-item active" onclick="toggleFaq(this)">
           <div class="faq-question">
             <span>Q1. 我英文不夠流暢，這門課會不會聽不懂或很吃力？</span>
-            <span class="faq-arrow">▼</span>
+            <span class="faq-icon">▼</span>
           </div>
           <div class="faq-answer">
             完全不用擔心！老師會提供完整的中英對照教材與講稿。這門課不是英文文法課，而是學會使用科學家常用的專有名詞與核心句型（例如：The data show that...）。只要願意嘗試，漸漸就會自然習慣用英文描述現象！
           </div>
         </div>
 
-        <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
             <span>Q2. 我以前從來沒有寫過 Python 程式，能跟得上嗎？</span>
-            <span class="faq-arrow">▼</span>
+            <span class="faq-icon">▼</span>
           </div>
           <div class="faq-answer">
             絕對跟得上！我們使用 Google 免費提供的 Colab 雲端平台，不需要繁雜的電腦設定。每一行程式老師都會親自示範，並提供完整範本。遇到 Bug 時，我們還會教你如何問 AI 來排錯與修改。
           </div>
         </div>
 
-        <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
             <span>Q3. 作業可以用 AI 協作嗎？老師會抓抄襲嗎？</span>
-            <span class="faq-arrow">▼</span>
+            <span class="faq-icon">▼</span>
           </div>
           <div class="faq-answer">
-            我們非常歡迎大家聰明使用 AI！但重點是「不能直接把 AI 當成答案複製貼上」。你需要保留提問的 Prompt、AI 給的回覆、以及你自己如何懷疑和透過資料驗證的歷程（即 AI Interaction Log）。只要清楚記錄你的思考過程，就是一份極高分的作業！
+            我們非常歡迎大家聰明使用 AI！但重點是「不能直接把 AI 當成答案複製貼上」。你需要保留提問的 Prompt、AI 給的回覆、以及你自己如何懷疑和透過資料驗證的歷程（即 AI Interaction
+            Log）。只要清楚記錄你的思考過程，就是一份極高分的作業！
           </div>
         </div>
 
-        <div class="faq-card" onclick="toggleFaq(this)">
+        <div class="faq-item" onclick="toggleFaq(this)">
           <div class="faq-question">
             <span>Q4. 什麼是 GitHub Pages？期末專題要怎麼交？</span>
-            <span class="faq-arrow">▼</span>
+            <span class="faq-icon">▼</span>
           </div>
           <div class="faq-answer">
             GitHub Pages 是能把你的代碼與網頁免費公開發布成網站的服務。期末小組作業不再只是一份沉睡在硬碟裡的 Word 檔，而是一個全世界都能造訪瀏覽的精美專題網站，未來還可以直接放進你的升學或求職個人履歷！
@@ -2397,17 +2133,14 @@
     </div>
   </section>
 
-  <!-- 水彩頁尾 (Footer) -->
+  <!-- 頁尾 Footer -->
   <footer>
     <div class="container">
-      <div class="footer-stamp">✨ 探索地球 · 數位探究 · 擁抱科學</div>
-      <h3 style="font-weight: 800; font-size: 1.35rem; margin-bottom: 0.5rem; color: var(--ink-dark);">
-        地球物理通論 General Geophysics
-      </h3>
+      <div class="footer-badge">✨ 探索地球 · 數位探究 · 擁抱科學</div>
+      <h3 class="footer-title">地球物理通論 General Geophysics</h3>
       <p class="footer-text">
         臺北市立大學 地球環境暨生物資源學系 115 學年度第 1 學期（2026 秋季學期）<br>
-        授課教師：陳達毅 博士 / 助理教授 (Dr. Dayi Chen)<br>
-        研究領域：地震測報 · 地震預警系統 · 地球物理資料分析 · AI 輔助科學教育
+        授課教師：陳達毅 博士 / 助理教授 (Dr. Dayi Chen) ｜ 研究領域：地震測報 · 地震預警系統 · AI 輔助科學教育
       </p>
 
       <div class="footer-links">
@@ -2419,109 +2152,104 @@
         <span>·</span>
         <a href="#toolbox">🧠 思考工具箱</a>
         <span>·</span>
-        <a href="#resources">📂 專案檔案清單</a>
+        <a href="#resources">📂 教材檔案庫</a>
         <span>·</span>
         <a href="#roadmap">🗺️ 18 週學習地圖</a>
         <span>·</span>
-        <a href="#grading">📊 評量標準</a>
+        <a href="#grading">📊 評量方式</a>
         <span>·</span>
         <a href="#">🔝 回到頂端</a>
       </div>
 
-      <div class="license-note">
+      <p style="font-size: 0.82rem; color: var(--text-light); margin-top: 1.8rem;">
         本課程教材遵循學術教學與教育共享原則，僅供臺北市立大學師生教學與學術研究使用。引用或改編請註明出處。<br>
-        Designed with watercolor aesthetics for GitHub Pages deployment. © 2026 UTaipei DEER.
-      </div>
+        Designed for UTaipei DEER General Geophysics. © 2026.
+      </p>
     </div>
   </footer>
 
-  <!-- Toast 訊息通知 -->
-  <div id="toast"><span>✔</span> <span id="toast-text">已複製句型到剪貼簿！</span></div>
-
-  <!-- 回到頂端浮動按鈕 -->
-  <button class="btn-back-to-top" id="btn-back-to-top" onclick="scrollToTop()" title="回到頂端">▲</button>
+  <!-- 提示與按鈕 -->
+  <div id="toast">已複製句型到剪貼簿！</div>
+  <button class="btn-scroll-top" id="scroll-top-btn" onclick="window.scrollTo({top:0, behavior:'smooth'})"
+    title="回到頂端">▲</button>
 
   <!-- 互動邏輯 JavaScript -->
   <script>
-    // 1. 任務清單點選與 localStorage 持久化儲存
-    const STORAGE_KEY = 'utaipei_geophysics_tasks_week01';
+    const TASK_STORAGE_KEY = 'utaipei_geophysics_tasks_v1';
 
-    function loadTaskState() {
+    // 1. 任務清單與進度計算
+    function loadSavedTasks() {
       try {
-        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        const saved = JSON.parse(localStorage.getItem(TASK_STORAGE_KEY) || '[]');
         saved.forEach(id => {
-          const item = document.querySelector(`.task-item[data-task-id="${id}"]`);
-          if (item) item.classList.add('checked');
+          const el = document.querySelector(`.task-card[data-tid="${id}"]`);
+          if (el) el.classList.add('completed');
         });
       } catch (e) {
-        console.error('無法讀取本機任務儲存狀態', e);
+        console.warn('無法讀取任務狀態', e);
       }
-      updateTaskProgress();
+      calcProgress();
     }
 
-    function saveTaskState() {
-      const checkedIds = [];
-      document.querySelectorAll('.task-item.checked').forEach(item => {
-        checkedIds.push(item.getAttribute('data-task-id'));
+    function saveTasks() {
+      const ids = [];
+      document.querySelectorAll('.task-card.completed').forEach(c => {
+        ids.push(c.getAttribute('data-tid'));
       });
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(checkedIds));
+        localStorage.setItem(TASK_STORAGE_KEY, JSON.stringify(ids));
       } catch (e) {
-        console.error('無法儲存任務狀態', e);
+        console.warn('無法儲存任務狀態', e);
       }
     }
 
-    function updateTaskProgress() {
-      const items = document.querySelectorAll('.task-item');
-      const checkedItems = document.querySelectorAll('.task-item.checked');
-      const total = items.length;
-      const done = checkedItems.length;
-      const percent = total > 0 ? Math.round((done / total) * 100) : 0;
+    function calcProgress() {
+      const all = document.querySelectorAll('.task-card');
+      const done = document.querySelectorAll('.task-card.completed');
+      const total = all.length;
+      const finished = done.length;
+      const pct = total > 0 ? Math.round((finished / total) * 100) : 0;
 
-      const percentEl = document.getElementById('task-progress-percent');
-      const fillEl = document.getElementById('task-progress-fill');
+      const txt = document.getElementById('task-percent-text');
+      const bar = document.getElementById('task-progress-bar');
+      if (txt) txt.innerText = `${finished}/${total} (${pct}%)`;
+      if (bar) bar.style.width = `${pct}%`;
 
-      if (percentEl) percentEl.innerText = `${done}/${total} (${percent}%)`;
-      if (fillEl) fillEl.style.width = `${percent}%`;
-
-      if (done === total && total > 0) {
-        showToast('🎉 太棒了！您已全數完成第 1 週 8 大通關任務！');
+      if (finished === total && total > 0) {
+        toast('🎉 太棒了！您已全數完成第 1 週 8 大通關任務！');
       }
     }
 
-    function toggleTask(el) {
-      el.classList.toggle('checked');
-      saveTaskState();
-      updateTaskProgress();
+    function toggleTaskItem(el) {
+      el.classList.toggle('completed');
+      saveTasks();
+      calcProgress();
     }
 
-    function resetTasks() {
-      if (confirm('確定要重設第 1 週的任務勾選進度嗎？')) {
-        document.querySelectorAll('.task-item').forEach(item => item.classList.remove('checked'));
-        saveTaskState();
-        updateTaskProgress();
-        showToast('已重設任務進度');
+    function resetAllTasks() {
+      if (confirm('確定要重設第 1 週任務的勾選狀態嗎？')) {
+        document.querySelectorAll('.task-card').forEach(c => c.classList.remove('completed'));
+        saveTasks();
+        calcProgress();
+        toast('已重設任務進度');
       }
     }
 
-    // 2. 思考工具箱 Tab 切換
-    function switchTab(tabId, btnEl) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-
-      btnEl.classList.add('active');
-      const target = document.getElementById('tab-' + tabId);
+    // 2. 思考工具箱頁籤切換
+    function showTab(paneId, btn) {
+      document.querySelectorAll('.tab-trigger').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById(paneId);
       if (target) target.classList.add('active');
     }
 
     // 3. 18 週地圖分類篩選
-    function filterWeeks(category, btnEl) {
-      document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active'));
-      btnEl.classList.add('active');
-
-      const cards = document.querySelectorAll('.week-card');
-      cards.forEach(card => {
-        if (category === 'all' || card.getAttribute('data-category') === category) {
+    function filterRoadmap(cat, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.week-card').forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-cat') === cat) {
           card.style.display = 'flex';
         } else {
           card.style.display = 'none';
@@ -2529,64 +2257,56 @@
       });
     }
 
-    // 4. FAQ 手風琴切換
+    // 4. FAQ 手風琴
     function toggleFaq(card) {
-      const isOpen = card.classList.contains('open');
-      document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
-      if (!isOpen) {
-        card.classList.add('open');
-      }
+      const wasActive = card.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!wasActive) card.classList.add('active');
     }
 
-    // 5. 複製句型與 Toast 通知
-    function copySentence(text) {
-      navigator.clipboard.writeText(text).then(() => {
-        showToast(`已複製句型：「${text}」`);
-      }).catch(err => {
-        showToast('複製失敗，請手動反白複製');
+    // 5. 複製剪貼簿與 Toast 通知
+    function copyText(str) {
+      navigator.clipboard.writeText(str).then(() => {
+        toast(`已複製：「${str}」`);
+      }).catch(() => {
+        toast('複製失敗，請手動反白選取');
       });
     }
 
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const textEl = document.getElementById('toast-text');
-      if (textEl) textEl.innerText = msg;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2800);
+    function toast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2600);
     }
 
-    // 6. 手機版選單切換
-    function toggleMobileNav() {
-      const links = document.getElementById('nav-links');
-      if (links) links.classList.toggle('open');
+    // 6. 手機版導航
+    function toggleNav() {
+      const menu = document.getElementById('nav-menu');
+      if (menu) menu.classList.toggle('open');
     }
 
-    function closeMobileNav() {
-      const links = document.getElementById('nav-links');
-      if (links) links.classList.remove('open');
+    function closeNav() {
+      const menu = document.getElementById('nav-menu');
+      if (menu) menu.classList.remove('open');
     }
 
-    // 7. 回到頂端浮動按鈕監聽
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
+    // 7. 回到頂端浮動按鈕
     window.addEventListener('scroll', () => {
-      const btn = document.getElementById('btn-back-to-top');
+      const btn = document.getElementById('scroll-top-btn');
       if (!btn) return;
-      if (window.scrollY > 400) {
+      if (window.scrollY > 350) {
         btn.classList.add('show');
       } else {
         btn.classList.remove('show');
       }
     });
 
-    // 頁面初始化
+    // 頁面就緒
     document.addEventListener('DOMContentLoaded', () => {
-      loadTaskState();
+      loadSavedTasks();
     });
   </script>
 </body>
+
 </html>
